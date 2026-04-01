@@ -127,9 +127,18 @@ const Home = () => {
       <section className="relative w-full h-screen overflow-hidden">
         {/* Video BG */}
         <motion.div className="absolute inset-0 z-0" style={{ opacity: videoOpacity, scale: videoScale }}>
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover" style={{ opacity: 0.5 }}>
-            <source src="/images/ani/3252858-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-          </video>
+          {/* YouTube Background Video - oversized & centered to cover full screen */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{ width: '150vw', height: '84.375vw', maxHeight: '150vh', maxWidth: '266.67vh', opacity: 0.5 }}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/tC8ThHULGuM?autoplay=1&mute=1&loop=1&playlist=tC8ThHULGuM&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1"
+              title="Background Video"
+              className="w-full h-full border-0"
+              allow="autoplay; encrypted-media"
+              loading="eager"
+            />
+          </div>
           {/* Dark overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/20" />
