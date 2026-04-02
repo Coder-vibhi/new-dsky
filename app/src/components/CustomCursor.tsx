@@ -96,8 +96,8 @@ const CustomCursor = () => {
       {/* Outer ring */}
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-pink/50 pointer-events-none z-[9999] mix-blend-difference"
-        style={{ opacity: 0 }}
+        className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-pink/50 pointer-events-none z-[9999]"
+        style={{ opacity: 0, mixBlendMode: 'multiply' }}
       />
       
       {/* Inner dot */}

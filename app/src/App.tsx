@@ -7,7 +7,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Components
 import Loader from './components/Loader';
 import Navigation from './components/Navigation';
-import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
 import Footer from './components/Footer';
 
@@ -45,13 +44,7 @@ function App() {
   }
 
   return (
-    <div className="relative bg-black min-h-screen overflow-x-hidden">
-      {/* Grain overlay */}
-      <div className="grain-overlay" />
-      
-      {/* Custom cursor */}
-      <CustomCursor />
-      
+    <div className="relative min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(160deg, #f8f3ec 0%, #f2ece4 40%, #faf5f7 100%)' }}>
       {/* Navigation */}
       <Navigation />
       

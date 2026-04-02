@@ -1,171 +1,133 @@
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { LucideIcon } from 'lucide-react';
 import { 
   Code, Smartphone, Palette, Globe, 
   Users, Briefcase, Calculator, Shield,
-  ArrowRight, Check, Star
+  ArrowRight, Check, Star, Brain
 } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface ServiceCardProps {
   service: {
     id: string;
     icon: LucideIcon;
     title: string;
+    subtitle?: string;
     description: string;
     features: string[];
     color: string;
-    gradient: string;
-    image?: string;
+    featured?: boolean;
   };
-  index: number;
 }
 
-const ServiceCard = ({ service, index }: ServiceCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 });
+const ServiceCard = ({ service }: ServiceCardProps) => {
+  if (service.featured) {
+    return (
+      <Link to={`/services/${service.id}`}>
+        <div className="group relative cursor-pointer overflow-hidden border-2 border-pink/30 hover:border-pink/60 transition-colors duration-300">
+          <div className="relative p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center" style={{ background: '#fefcfa' }}>
+            {/* Left Content */}
+            <div className="flex-1">
+              <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-6`}>
+                <service.icon className="w-7 h-7 text-white" />
+              </div>
+              
+              {service.subtitle && (
+                <p className="text-pink text-xs font-body tracking-[0.2em] uppercase mb-2">{service.subtitle}</p>
+              )}
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    
-    setTransform({ rotateX, rotateY });
-  };
+              <h3 className="text-2xl md:text-3xl font-display font-black text-[#2c2420] mb-4 group-hover:text-pink transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-[#7a6e64] font-body leading-relaxed mb-8 max-w-xl">
+                {service.description}
+              </p>
 
-  const handleMouseLeave = () => {
-    setTransform({ rotateX: 0, rotateY: 0 });
-  };
+              {/* Features */}
+              <div className="flex flex-wrap gap-4 mb-6">
+                {service.features.map((feature, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-[#7a6e64]">
+                    <Check className="w-4 h-4 text-pink" />
+                    {feature}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 text-pink font-body font-semibold">
+                <span>Explore Program</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+
+            {/* Right Visual */}
+            <div className="hidden md:flex items-center justify-center">
+              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-pink/15 to-purple-500/15 flex items-center justify-center">
+                <service.icon className="w-20 h-20 text-pink/50" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Link>
+    );
+  }
 
   return (
     <Link to={`/services/${service.id}`}>
-      <motion.div
-        ref={cardRef}
-        className="service-card group relative h-full cursor-pointer overflow-hidden"
-        initial={{ opacity: 0, y: 80, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        whileHover={{ y: -15, scale: 1.02 }}
-        style={{
-          transform: `perspective(1000px) rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg)`,
-          transition: 'transform 0.15s ease-out'
-        }}
-      >
-        <div className="relative p-8 bg-white/5 backdrop-blur-sm border border-white/10 h-full overflow-hidden flex flex-col">
-          {/* Service Image Background */}
-          <motion.div 
-            className="absolute inset-0 z-0"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <img 
-              src={service.image || '/images/hero-tech.png'} 
-              alt={service.title} 
-              className="w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500"
-            />
-          </motion.div>
-
-          {/* Gradient background overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-500 z-10`} />
-          
-          {/* Glow effect */}
-          <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${service.gradient} rounded-full blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-10`} />
-          
-          {/* Shine sweep */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 z-10" />
-
+      <div className="group relative h-full cursor-pointer overflow-hidden border border-[#ddd2c4]">
+        <div className="relative p-8 h-full flex flex-col" style={{ background: '#fefcfa' }}>
           {/* Icon */}
-          <motion.div 
-            className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 relative z-10`}
-            whileHover={{ rotate: 360, scale: 1.2 }}
-            transition={{ duration: 0.6 }}
-          >
-            <service.icon className="w-8 h-8 text-white" />
-          </motion.div>
+          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-6`}>
+            <service.icon className="w-5 h-5 text-white" />
+          </div>
 
           {/* Content */}
-          <h3 className="text-2xl font-display font-bold text-white mb-4 relative z-10 group-hover:text-pink transition-colors duration-300">
+          <h3 className="text-xl font-display font-bold text-[#2c2420] mb-3 group-hover:text-pink transition-colors duration-300">
             {service.title}
           </h3>
-          <p className="text-white/50 font-body mb-6 relative z-10 flex-grow">
+          <p className="text-[#7a6e64] font-body text-sm mb-6 flex-grow">
             {service.description}
           </p>
 
           {/* Features */}
-          <ul className="space-y-2 mb-8 relative z-10">
+          <ul className="space-y-2 mb-6">
             {service.features.map((feature, i) => (
-              <motion.li 
-                key={i} 
-                className="flex items-center gap-2 text-sm text-white/40"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-              >
-                <Check className="w-4 h-4 text-pink" />
+              <li key={i} className="flex items-center gap-2 text-sm text-[#7a6e64]">
+                <Check className="w-3.5 h-3.5 text-pink flex-shrink-0" />
                 {feature}
-              </motion.li>
+              </li>
             ))}
           </ul>
 
           {/* CTA */}
-          <div className="flex items-center gap-2 text-pink relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-            <span className="text-sm font-body font-medium">Explore</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+          <div className="flex items-center gap-2 text-pink/60 group-hover:text-pink transition-all duration-300">
+            <span className="text-xs font-body font-medium">Explore</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 };
 
 const Services = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo('.services-title',
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.services-title',
-            start: 'top 85%',
-            once: true
-          }
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const services = [
+    {
+      id: 'ai-training',
+      icon: Brain,
+      title: 'AI Training & Development',
+      subtitle: 'Transform Your Career',
+      description: 'Industry-leading AI training program with professional certification, internship opportunities, and real-world project experience.',
+      features: ['Professional Certificate', 'Internship Opportunity', 'Placement Assistance', 'Letter of Recommendation'],
+      color: 'from-pink to-purple-600',
+      featured: true
+    },
     {
       id: 'web-development',
       icon: Code,
       title: 'Web Development',
-      description: 'Custom websites and web applications built with modern technologies for optimal performance and user experience.',
+      description: 'Custom websites and web applications built with modern technologies for optimal performance.',
       features: ['React & Next.js', 'Node.js Backend', 'E-commerce Solutions', 'CMS Integration'],
-      color: 'from-pink to-rose-500',
-      gradient: 'from-pink/50 to-rose-500/50',
-      image: '/images/web-dev.png'
+      color: 'from-pink to-rose-500'
     },
     {
       id: 'app-development',
@@ -173,9 +135,7 @@ const Services = () => {
       title: 'App Development',
       description: 'Native and cross-platform mobile applications that deliver seamless experiences across all devices.',
       features: ['iOS & Android', 'React Native', 'Flutter', 'App Store Optimization'],
-      color: 'from-purple-500 to-violet-500',
-      gradient: 'from-purple-500/50 to-violet-500/50',
-      image: '/images/app-dev.png'
+      color: 'from-purple-500 to-violet-500'
     },
     {
       id: 'ui-ux-design',
@@ -183,9 +143,7 @@ const Services = () => {
       title: 'UI/UX Design',
       description: 'User-centered design that combines aesthetics with functionality to create engaging digital experiences.',
       features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-      color: 'from-cyan-500 to-blue-500',
-      gradient: 'from-cyan-500/50 to-blue-500/50',
-      image: '/images/ui-ux.png'
+      color: 'from-cyan-500 to-blue-500'
     },
     {
       id: 'digital-marketing',
@@ -193,9 +151,7 @@ const Services = () => {
       title: 'Digital Marketing',
       description: 'Strategic marketing solutions that increase visibility, drive traffic, and convert visitors into customers.',
       features: ['SEO Optimization', 'Social Media', 'Content Strategy', 'PPC Campaigns'],
-      color: 'from-emerald-500 to-teal-500',
-      gradient: 'from-emerald-500/50 to-teal-500/50',
-      image: '/images/digital-marketing.png'
+      color: 'from-emerald-500 to-teal-500'
     },
     {
       id: 'staffing',
@@ -203,9 +159,7 @@ const Services = () => {
       title: 'IT Staffing',
       description: 'Flexible staffing solutions to help you find the right talent for your technology projects.',
       features: ['Contract Staffing', 'Permanent Placement', 'Team Augmentation', 'Skill Assessment'],
-      color: 'from-amber-500 to-orange-500',
-      gradient: 'from-amber-500/50 to-orange-500/50',
-      image: '/images/hero-tech.png'
+      color: 'from-amber-500 to-orange-500'
     },
     {
       id: 'bpo',
@@ -213,9 +167,7 @@ const Services = () => {
       title: 'BPO Services',
       description: 'Business process outsourcing that helps you streamline operations and reduce costs.',
       features: ['Customer Support', 'Data Entry', 'Back Office', 'Technical Support'],
-      color: 'from-red-500 to-pink',
-      gradient: 'from-red-500/50 to-pink/50',
-      image: '/images/hero-tech.png'
+      color: 'from-red-500 to-pink'
     },
     {
       id: 'insurance',
@@ -223,9 +175,7 @@ const Services = () => {
       title: 'Insurance Solutions',
       description: 'Technology solutions tailored for the insurance industry to improve efficiency and customer service.',
       features: ['Policy Management', 'Claims Processing', 'CRM Solutions', 'Data Analytics'],
-      color: 'from-indigo-500 to-purple-500',
-      gradient: 'from-indigo-500/50 to-purple-500/50',
-      image: '/images/hero-tech.png'
+      color: 'from-indigo-500 to-purple-500'
     },
     {
       id: 'financial',
@@ -233,38 +183,15 @@ const Services = () => {
       title: 'Financial Services',
       description: 'Digital transformation solutions for financial institutions to stay competitive in the modern market.',
       features: ['Fintech Solutions', 'Payment Gateways', 'Risk Management', 'Compliance'],
-      color: 'from-green-500 to-emerald-500',
-      gradient: 'from-green-500/50 to-emerald-500/50',
-      image: '/images/hero-tech.png'
+      color: 'from-green-500 to-emerald-500'
     }
   ];
 
   return (
-    <main ref={sectionRef} className="relative pt-20">
+    <main className="relative pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-black" />
-        
-        {/* Animated orbs */}
-        <motion.div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-pink/10 rounded-full blur-[120px]"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 100, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-[100px]"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, -50, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, delay: 2 }}
-        />
-
-        <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 py-20">
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f3ec' }}>
+        <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <motion.span 
               className="text-pink text-sm font-body tracking-[0.3em] uppercase"
@@ -275,12 +202,24 @@ const Services = () => {
               What We Offer
             </motion.span>
             
-            <h1 className="services-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-white leading-none tracking-tighter">
-              OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink via-purple-500 to-cyan-400">SERVICES</span>
-            </h1>
+            <motion.h1 
+              className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-black text-[#2c2420] leading-none tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              OUR{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, #ff73c3, #a855f7, #06b6d4)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
+                SERVICES
+              </span>
+            </motion.h1>
             
             <motion.p 
-              className="mt-8 text-xl text-white/60 font-body leading-relaxed max-w-2xl"
+              className="mt-6 text-lg text-[#7a6e64] font-body leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -293,18 +232,26 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="relative py-24 bg-zinc-950">
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f2ece4' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            {services.map((service) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className={service.featured ? 'sm:col-span-2 lg:col-span-3' : ''}
+              >
+                <ServiceCard service={service} />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="relative py-24 bg-black">
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f3ec' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
@@ -319,13 +266,13 @@ const Services = () => {
               </motion.span>
               
               <motion.h2 
-                className="mt-4 text-4xl md:text-5xl font-display font-black text-white mb-8"
-                initial={{ opacity: 0, y: 30 }}
+                className="mt-4 text-3xl md:text-4xl font-display font-black text-[#2c2420] mb-8"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                THE <span className="text-pink">D SKY</span> ADVANTAGE
+                THE D SKY ADVANTAGE
               </motion.h2>
 
               <div className="space-y-6">
@@ -337,68 +284,45 @@ const Services = () => {
                   <motion.div
                     key={index}
                     className="flex gap-4"
-                    initial={{ opacity: 0, x: -30 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.2 }}
                   >
-                    <div className="w-12 h-12 rounded-lg bg-pink/20 flex items-center justify-center flex-shrink-0">
-                      <featureItem.icon className="w-6 h-6 text-pink" />
+                    <div className="w-10 h-10 rounded-lg bg-pink/20 flex items-center justify-center flex-shrink-0">
+                      <featureItem.icon className="w-5 h-5 text-pink" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-display font-bold text-white">{featureItem.title}</h4>
-                      <p className="text-white/50 font-body text-sm">{featureItem.desc}</p>
+                      <h4 className="text-base font-display font-bold text-[#2c2420]">{featureItem.title}</h4>
+                      <p className="text-[#7a6e64] font-body text-sm">{featureItem.desc}</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Right Visual */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="relative aspect-square">
-                {/* Central circle */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    className="w-48 h-48 rounded-full bg-gradient-to-br from-pink to-purple-500 flex items-center justify-center"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  >
-                    <div className="w-40 h-40 rounded-full bg-black flex items-center justify-center">
-                      <span className="text-4xl font-display font-black text-white">D<span className="text-pink">.</span></span>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Orbiting elements */}
-                {[...Array(6)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-4 h-4 bg-pink rounded-full"
-                    style={{
-                      top: '50%',
-                      left: '50%',
-                    }}
-                    animate={{
-                      x: Math.cos(i * Math.PI / 3) * 150 - 8,
-                      y: Math.sin(i * Math.PI / 3) * 150 - 8,
-                    }}
-                    transition={{
-                      duration: 0,
-                    }}
-                  />
-                ))}
-
-                {/* Glow */}
-                <div className="absolute inset-0 bg-pink/20 rounded-full blur-[100px]" />
-              </div>
-            </motion.div>
+            {/* Right - Stats */}
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { value: '150+', label: 'Projects' },
+                { value: '50+', label: 'Clients' },
+                { value: '8+', label: 'Years' },
+                { value: '24/7', label: 'Support' },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="p-6 border border-[#ddd2c4] text-center"
+                  style={{ background: '#fefcfa' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="text-3xl font-display font-black text-[#2c2420] mb-1">{stat.value}</div>
+                  <div className="text-xs text-[#7a6e64] font-body uppercase tracking-wider">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -34,7 +34,7 @@ const Navigation = () => {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' 
+            ? 'bg-white/70 backdrop-blur-xl border-b border-[#ddd2c4]' 
             : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
@@ -46,7 +46,7 @@ const Navigation = () => {
             {/* Logo */}
             <Link to="/" className="relative group">
               <motion.div 
-                className="text-2xl font-display font-black text-white tracking-tighter"
+                className="text-2xl font-display font-black text-[#1a1a1a] tracking-tighter"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -66,7 +66,7 @@ const Navigation = () => {
                     className={`text-sm font-body font-medium tracking-wide transition-colors ${
                       location.pathname === link.href 
                         ? 'text-pink' 
-                        : 'text-white/70 hover:text-white'
+                        : 'text-[#7a6e64] hover:text-[#2c2420]'
                     }`}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white p-2"
+              className="md:hidden text-[#2c2420] p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -116,7 +116,8 @@ const Navigation = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-black md:hidden"
+            className="fixed inset-0 z-40 md:hidden"
+            style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }}
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -134,7 +135,7 @@ const Navigation = () => {
                   <Link
                     to={link.href}
                     className={`text-3xl font-display font-bold ${
-                      location.pathname === link.href ? 'text-pink' : 'text-white'
+                      location.pathname === link.href ? 'text-pink' : 'text-[#2c2420]'
                     }`}
                   >
                     {link.label}

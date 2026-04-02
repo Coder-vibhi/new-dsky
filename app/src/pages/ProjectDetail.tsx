@@ -44,7 +44,7 @@ const projectData: Record<string, {
     team: '8 members',
     client: 'Luxury Retail Brand',
     color: 'from-pink to-rose-500',
-    gradient: 'from-pink/50 to-rose-500/50'
+    gradient: 'from-pink/40 to-rose-500/50'
   },
   'fintech-app': {
     title: 'FinFlow',
@@ -185,9 +185,9 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }}>
         <div className="text-center">
-          <h1 className="text-4xl font-display font-bold text-white mb-4">Project Not Found</h1>
+          <h1 className="text-4xl font-display font-bold text-[#2c2420] mb-4">Project Not Found</h1>
           <Link to="/portfolio" className="text-pink hover:underline">
             Back to Portfolio
           </Link>
@@ -197,16 +197,16 @@ const ProjectDetail = () => {
   }
 
   return (
-    <main ref={sectionRef} className="relative pt-20">
+      <main ref={sectionRef} className="relative pt-20">
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         {/* Background */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`} />
-        <div className="absolute inset-0 bg-black/80" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-5`} />
         
         {/* Animated elements */}
         <motion.div
-          className={`absolute top-1/4 right-1/4 w-96 h-96 rounded-full blur-[150px] bg-gradient-to-br ${project.color} opacity-20`}
+          className={`absolute top-1/4 right-1/4 w-96 h-96 rounded-full blur-[150px] bg-gradient-to-br ${project.color} opacity-10`}
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 50, 0],
@@ -221,7 +221,7 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <Link to="/portfolio" className="inline-flex items-center gap-2 text-white/60 hover:text-pink transition-colors mb-8">
+            <Link to="/portfolio" className="inline-flex items-center gap-2 text-[#7a6e64] hover:text-pink transition-colors mb-8">
               <ArrowLeft className="w-5 h-5" />
               <span className="font-body">Back to Portfolio</span>
             </Link>
@@ -239,12 +239,12 @@ const ProjectDetail = () => {
                 {project.category}
               </motion.span>
             
-            <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-display font-black text-white leading-none tracking-tighter">
+            <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#2c2420] leading-none tracking-tighter">
               {project.title.toUpperCase()}
             </h1>
             
             <motion.p 
-              className="mt-8 text-xl text-white/60 font-body leading-relaxed max-w-2xl"
+              className="mt-8 text-xl text-[#7a6e64] font-body leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -261,15 +261,15 @@ const ProjectDetail = () => {
             >
               <div className="flex items-center gap-3">
                 <Calendar className="w-5 h-5 text-pink" />
-                <span className="text-white/60 font-body">{project.timeline}</span>
+                <span className="text-[#7a6e64] font-body">{project.timeline}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Users className="w-5 h-5 text-pink" />
-                <span className="text-white/60 font-body">{project.team}</span>
+                <span className="text-[#7a6e64] font-body">{project.team}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Target className="w-5 h-5 text-pink" />
-                <span className="text-white/60 font-body">{project.client}</span>
+                <span className="text-[#7a6e64] font-body">{project.client}</span>
               </div>
             </motion.div>
           </div>
@@ -288,43 +288,44 @@ const ProjectDetail = () => {
           }}
         />
         {/* Overlay gradient to match design */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80`} />
+        <div className={`absolute inset-0 bg-gradient-to-t from-[#faf8f5] via-transparent to-transparent opacity-80`} />
       </section>
 
       {/* Overview Section */}
-      <section className="relative py-24 bg-zinc-950">
-        <div className="w-full px-6 md:px-12 lg:px-20">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4, #f8f3ec, #faf5f7)' }}>
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-pink/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left - Description */}
             <div className="detail-section">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#2c2420] mb-6">
                 PROJECT <span className="text-pink">OVERVIEW</span>
               </h2>
-              <p className="text-white/60 font-body leading-relaxed mb-8">
+              <p className="text-[#7a6e64] font-body leading-relaxed mb-8">
                 {project.longDescription}
               </p>
 
-              <h3 className="text-xl font-display font-bold text-white mb-4">The Challenge</h3>
-              <p className="text-white/60 font-body leading-relaxed mb-8">
+              <h3 className="text-xl font-display font-bold text-[#2c2420] mb-4">The Challenge</h3>
+              <p className="text-[#7a6e64] font-body leading-relaxed mb-8">
                 {project.challenge}
               </p>
 
-              <h3 className="text-xl font-display font-bold text-white mb-4">Our Solution</h3>
-              <p className="text-white/60 font-body leading-relaxed">
+              <h3 className="text-xl font-display font-bold text-[#2c2420] mb-4">Our Solution</h3>
+              <p className="text-[#7a6e64] font-body leading-relaxed">
                 {project.solution}
               </p>
             </div>
 
             {/* Right - Technologies */}
             <div className="detail-section">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#2c2420] mb-6">
                 TECHNOLOGY <span className="text-pink">STACK</span>
               </h2>
               <div className="flex flex-wrap gap-3">
                   {project.technologies.map((tech, index) => (
                     <motion.span
                       key={index}
-                      className="px-4 py-2 bg-white/5 border border-white/10 text-white/70 font-body text-sm"
+                      className="px-4 py-2 border border-[#ddd2c4] text-[#7a6e64] font-body text-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -341,7 +342,8 @@ const ProjectDetail = () => {
       </section>
 
       {/* Results Section */}
-      <section className="relative py-24 bg-black">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec, #f2ece4)' }}>
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-gradient-to-t from-purple-200/[0.04] to-transparent rounded-full blur-[80px]" />
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span 
@@ -353,7 +355,7 @@ const ProjectDetail = () => {
               Results
             </motion.span>
             <motion.h2 
-              className="mt-4 text-4xl md:text-5xl font-display font-black text-white"
+              className="mt-4 text-4xl md:text-5xl font-display font-black text-[#2c2420]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -365,9 +367,9 @@ const ProjectDetail = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.results.map((result, index) => (
-              <motion.div
-                key={index}
-                className="p-6 bg-white/5 border border-white/10 group"
+                <motion.div
+                  key={index}
+                  className="p-6 border border-[#ddd2c4] group shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
@@ -381,7 +383,7 @@ const ProjectDetail = () => {
                 >
                   <Zap className="w-6 h-6 text-pink" />
                 </motion.div>
-                <p className="text-white/70 font-body group-hover:text-white transition-colors">{result}</p>
+                <p className="text-[#7a6e64] font-body group-hover:text-[#2c2420] transition-colors">{result}</p>
               </motion.div>
             ))}
           </div>
@@ -389,12 +391,12 @@ const ProjectDetail = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-10`} />
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #f8f3ec, #faf5f7)' }}>
+        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-5`} />
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
-              className="text-4xl md:text-5xl font-display font-black text-white mb-6"
+              className="text-4xl md:text-5xl font-display font-black text-[#2c2420] mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -402,7 +404,7 @@ const ProjectDetail = () => {
               LIKE WHAT YOU <span className="text-pink">SEE?</span>
             </motion.h2>
             <motion.p 
-              className="text-lg text-white/60 font-body mb-10 max-w-2xl mx-auto"
+              className="text-lg text-[#7a6e64] font-body mb-10 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -419,7 +421,7 @@ const ProjectDetail = () => {
             >
               <Link to="/contact">
                 <motion.button
-                  className="px-10 py-5 bg-pink text-black font-display font-bold text-lg tracking-wide flex items-center gap-3"
+                  className="px-10 py-5 bg-pink text-white font-display font-bold text-lg tracking-wide flex items-center gap-3"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -436,3 +438,5 @@ const ProjectDetail = () => {
 };
 
 export default ProjectDetail;
+
+

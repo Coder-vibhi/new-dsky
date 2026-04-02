@@ -107,15 +107,17 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <main ref={sectionRef} className="relative pt-20">
+      <main ref={sectionRef} className="relative pt-20">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-black" />
+        {/* Rich gradient mesh background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }} />
+        <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-gradient-to-br from-pink/[0.04] via-purple-300/[0.03] to-transparent rounded-full blur-[80px]" />
+        <div className="absolute bottom-0 right-0 w-[40%] h-[40%] bg-gradient-to-tl from-amber-200/[0.06] to-transparent rounded-full blur-[60px]" />
         
         {/* Animated orbs */}
         <motion.div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-pink/10 rounded-full blur-[120px]"
+          className="absolute top-1/3 left-1/4 w-96 h-96 bg-pink/4 rounded-full blur-[120px]"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 100, 0],
@@ -123,7 +125,7 @@ const Portfolio = () => {
           transition={{ duration: 15, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-[100px]"
+          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, -50, 0],
@@ -142,12 +144,12 @@ const Portfolio = () => {
               Our Work
             </motion.span>
             
-            <h1 className="portfolio-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-white leading-none tracking-tighter">
+            <h1 className="portfolio-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#2c2420] leading-none tracking-tighter">
               FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink via-purple-500 to-cyan-400">PROJECTS</span>
             </h1>
             
             <motion.p 
-              className="mt-8 text-xl text-white/60 font-body leading-relaxed max-w-2xl"
+              className="mt-8 text-xl text-[#7a6e64] font-body leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -160,7 +162,7 @@ const Portfolio = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="relative py-8 bg-zinc-950 border-b border-white/5">
+      <section className="relative py-8 border-b border-[#ddd2c4]" style={{ background: 'linear-gradient(90deg, #f2ece4, #f8f3ec)' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="flex flex-wrap items-center gap-4">
             <Filter className="w-5 h-5 text-pink" />
@@ -169,9 +171,10 @@ const Portfolio = () => {
                 key={category}
                 className={`px-6 py-2 font-body text-sm tracking-wide transition-all ${
                   activeCategory === category
-                    ? 'bg-pink text-black'
-                    : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
+                    ? 'bg-pink text-white'
+                    : 'text-[#7a6e64] border border-[#ddd2c4] hover:text-[#2c2420]'
                 }`}
+                style={activeCategory !== category ? { background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' } : undefined}
                 onClick={() => setActiveCategory(category)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -184,8 +187,9 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="relative py-24 bg-zinc-950">
-        <div className="w-full px-6 md:px-12 lg:px-20">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4 0%, #f8f3ec 50%, #faf5f7 100%)' }}>
+        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-gradient-to-l from-purple-200/[0.04] to-transparent rounded-full blur-[100px]" />
+        <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -253,18 +257,18 @@ const Portfolio = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 bg-white/5 border border-white/10 border-t-0">
+                    <div className="p-6 border border-[#ddd2c4] border-t-0" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}>
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`px-3 py-1 text-xs font-body bg-gradient-to-r ${project.color} text-white rounded-full`}>
                           {project.category}
                         </span>
                       </div>
                       
-                      <h3 className="text-2xl font-display font-bold text-white mb-2 group-hover:text-pink transition-colors duration-300">
+                      <h3 className="text-2xl font-display font-bold text-[#2c2420] mb-2 group-hover:text-pink transition-colors duration-300">
                         {project.title}
                       </h3>
                       
-                      <p className="text-white/50 font-body text-sm mb-4 line-clamp-2">
+                      <p className="text-[#7a6e64] font-body text-sm mb-4 line-clamp-2">
                         {project.description}
                       </p>
 
@@ -273,7 +277,7 @@ const Portfolio = () => {
                         {project.tags.map((tag, i) => (
                           <motion.span 
                             key={i} 
-                            className="text-xs text-white/30 font-body hover:text-pink transition-colors"
+                            className="text-xs text-[#7a6e64] font-body hover:text-pink transition-colors"
                             whileHover={{ scale: 1.1 }}
                           >
                             #{tag}
@@ -290,7 +294,8 @@ const Portfolio = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-24 bg-black">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec, #f2ece4)' }}>
+        <div className="absolute bottom-0 left-1/3 w-[500px] h-[200px] bg-gradient-to-t from-amber-200/[0.04] to-transparent rounded-full blur-[80px]" />
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -310,7 +315,7 @@ const Portfolio = () => {
                 <div className="text-4xl md:text-6xl font-display font-black text-pink mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-white/50 font-body uppercase tracking-wider">
+                <div className="text-sm text-[#7a6e64] font-body uppercase tracking-wider">
                   {stat.label}
                 </div>
               </motion.div>
@@ -320,13 +325,13 @@ const Portfolio = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink/20 via-purple-500/10 to-cyan-500/20" />
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #f8f3ec, #faf5f7)' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-pink/[0.04] via-purple-300/[0.03] to-cyan-300/[0.03]" />
         
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
-              className="text-4xl md:text-5xl font-display font-black text-white mb-6"
+              className="text-4xl md:text-5xl font-display font-black text-[#2c2420] mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -334,7 +339,7 @@ const Portfolio = () => {
               HAVE A PROJECT IN <span className="text-pink">MIND?</span>
             </motion.h2>
             <motion.p 
-              className="text-lg text-white/60 font-body mb-10 max-w-2xl mx-auto"
+              className="text-lg text-[#7a6e64] font-body mb-10 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -351,7 +356,7 @@ const Portfolio = () => {
             >
               <Link to="/contact">
                 <motion.button
-                  className="px-10 py-5 bg-pink text-black font-display font-bold text-lg tracking-wide flex items-center gap-3"
+                  className="px-10 py-5 bg-pink text-white font-display font-bold text-lg tracking-wide flex items-center gap-3"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -368,3 +373,5 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
+

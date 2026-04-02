@@ -116,12 +116,14 @@ const About = () => {
     <main ref={sectionRef} className="relative pt-20">
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-900" />
+        {/* Rich gradient mesh background */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }} />
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-to-bl from-pink/[0.05] via-purple-300/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-gradient-to-tr from-amber-200/[0.06] to-transparent rounded-full blur-[80px]" />
         
         {/* Animated orbs */}
         <motion.div
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-pink/10 rounded-full blur-[120px]"
+          className="absolute top-1/4 right-1/4 w-96 h-96 bg-pink/4 rounded-full blur-[120px]"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 50, 0],
@@ -140,12 +142,12 @@ const About = () => {
               About Us
             </motion.span>
             
-            <h1 className="about-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-white leading-none tracking-tighter">
+            <h1 className="about-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#2c2420] leading-none tracking-tighter">
               WE ARE <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink via-purple-500 to-cyan-400">D SKY</span>
             </h1>
             
             <div className="about-content mt-8 max-w-2xl">
-              <p className="text-xl text-white/70 font-body leading-relaxed">
+              <p className="text-xl text-[#7a6e64] font-body leading-relaxed">
                 A team of passionate technologists, designers, and innovators dedicated to 
                 transforming businesses through cutting-edge digital solutions.
               </p>
@@ -155,8 +157,9 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="relative py-24 bg-black">
-        <div className="w-full px-6 md:px-12 lg:px-20">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec 0%, #faf5f7 50%, #f2ece4 100%)' }}>
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-pink/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div>
@@ -170,7 +173,7 @@ const About = () => {
               </motion.span>
               
               <motion.h2 
-                className="mt-4 text-4xl md:text-5xl font-display font-black text-white mb-8"
+                className="mt-4 text-4xl md:text-5xl font-display font-black text-[#2c2420] mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -179,7 +182,7 @@ const About = () => {
                 BUILDING THE <span className="text-pink">FUTURE</span>
               </motion.h2>
 
-              <div className="space-y-6 text-white/60 font-body leading-relaxed">
+              <div className="space-y-6 text-[#7a6e64] font-body leading-relaxed">
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -223,11 +226,11 @@ const About = () => {
                 whileHover={{ scale: 1.05, rotateZ: 2 }}
               >
                 <img 
-                  src="/images/team-work.png" 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" 
                   alt="Our Team" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-700 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#faf8f5]/50 via-transparent to-transparent" />
                 {/* Shine overlay */}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
@@ -245,7 +248,7 @@ const About = () => {
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 text-center"
+                    className="p-6 border border-[#ddd2c4] text-center shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -254,7 +257,7 @@ const About = () => {
                     <div className="text-3xl font-display font-black text-pink mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-[10px] text-white/50 font-body uppercase tracking-widest">
+                    <div className="text-[10px] text-[#7a6e64] font-body uppercase tracking-widest">
                       {stat.label}
                     </div>
                   </motion.div>
@@ -266,8 +269,9 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="relative py-24 bg-zinc-950">
-        <div className="w-full px-6 md:px-12 lg:px-20">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4, #f8f3ec, #faf5f7)' }}>
+        <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-gradient-to-t from-pink/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span 
@@ -279,7 +283,7 @@ const About = () => {
               Our Values
             </motion.span>
             <motion.h2 
-              className="mt-4 text-4xl md:text-6xl font-display font-black text-white"
+              className="mt-4 text-4xl md:text-6xl font-display font-black text-[#2c2420]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -294,7 +298,7 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="value-card group relative p-8 bg-white/5 backdrop-blur-sm border border-white/10 perspective-1000"
+                className="value-card group relative p-8 border border-[#ddd2c4] perspective-1000 shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -307,10 +311,10 @@ const About = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-display font-bold text-white mb-3">
+                <h3 className="text-xl font-display font-bold text-[#2c2420] mb-3">
                   {value.title}
                 </h3>
-                <p className="text-white/50 font-body text-sm leading-relaxed">
+                <p className="text-[#7a6e64] font-body text-sm leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -320,8 +324,9 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="relative py-24 bg-black">
-        <div className="w-full px-6 md:px-12 lg:px-20">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec, #f2ece4)' }}>
+        <div className="absolute top-1/2 left-0 w-full h-1/2 bg-gradient-to-t from-amber-200/[0.04] to-transparent" />
+        <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span 
@@ -333,7 +338,7 @@ const About = () => {
               Our Team
             </motion.span>
             <motion.h2 
-              className="mt-4 text-4xl md:text-6xl font-display font-black text-white"
+              className="mt-4 text-4xl md:text-6xl font-display font-black text-[#2c2420]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -376,7 +381,7 @@ const About = () => {
 
                 {/* Info */}
                 <motion.h3 
-                  className="text-lg font-display font-bold text-white group-hover:text-pink transition-colors duration-300"
+                  className="text-lg font-display font-bold text-[#2c2420] group-hover:text-pink transition-colors duration-300"
                   whileHover={{ letterSpacing: '0.05em' }}
                 >
                   {member.name}
@@ -394,3 +399,5 @@ const About = () => {
 };
 
 export default About;
+
+

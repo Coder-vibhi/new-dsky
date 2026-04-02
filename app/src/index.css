@@ -6,31 +6,35 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
+    --background: 30 30% 97%;
+    --foreground: 20 20% 12%;
+    --card: 30 20% 99%;
+    --card-foreground: 20 20% 12%;
+    --popover: 30 20% 99%;
+    --popover-foreground: 20 20% 12%;
     --primary: 326 100% 73%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 25% 94%;
+    --secondary-foreground: 20 20% 12%;
+    --muted: 30 18% 92%;
+    --muted-foreground: 25 10% 45%;
     --accent: 326 100% 73%;
-    --accent-foreground: 0 0% 0%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 18% 85%;
+    --input: 30 18% 85%;
     --ring: 326 100% 73%;
     --radius: 0rem;
     
     --pink: #ff73c3;
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #808080;
+    --cream: #f8f3ec;
+    --warm-linen: #f2ece4;
+    --soft-blush: #faf5f7;
+    --taupe: #ebe3d8;
+    --dark-text: #2c2420;
+    --muted-text: #7a6e64;
+    --warm-border: #ddd2c4;
   }
 }
 
@@ -44,7 +48,9 @@
   }
   
   body {
-    @apply bg-black text-white antialiased;
+    background: linear-gradient(160deg, #f8f3ec 0%, #f2ece4 40%, #faf5f7 100%);
+    color: var(--dark-text);
+    @apply antialiased;
     font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
   }
@@ -176,7 +182,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: black;
+  background: #f2ece4;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -186,7 +192,7 @@
 /* Selection */
 ::selection {
   background: var(--pink);
-  color: black;
+  color: white;
 }
 
 /* Animations */
