@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+//import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { LucideIcon } from 'lucide-react';
 import {
@@ -14,11 +15,11 @@ const services: Array<{
   description: string;
   color: string;
 }> = [
-  { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies.', color: 'from-pink to-rose-500' },
-  { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications for all devices.', color: 'from-purple-500 to-violet-500' },
-  { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality.', color: 'from-cyan-500 to-blue-500' },
-  { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing to increase visibility and drive traffic.', color: 'from-emerald-500 to-teal-500' },
-];
+    { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies.', color: 'from-pink to-rose-500' },
+    { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications for all devices.', color: 'from-purple-500 to-violet-500' },
+    { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality.', color: 'from-cyan-500 to-blue-500' },
+    { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing to increase visibility and drive traffic.', color: 'from-emerald-500 to-teal-500' },
+  ];
 
 const stats = [
   { value: '150+', label: 'Projects Delivered' },
