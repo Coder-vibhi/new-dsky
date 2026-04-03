@@ -50,7 +50,7 @@ const Navigation = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                D SKY<span className="text-pink group-hover:animate-pulse">.</span>
+                The Sky <span className="text-[#023e8a] group-hover:animate-pulse">Venture</span>
               </motion.div>
             </Link>
 
@@ -65,8 +65,8 @@ const Navigation = () => {
                   <motion.span
                     className={`text-sm font-body font-medium tracking-wide transition-colors ${
                       location.pathname === link.href 
-                        ? 'text-pink' 
-                        : 'text-[#7a6e64] hover:text-[#2c2420]'
+                        ? 'text-[#023e8a]' 
+                        : 'text-[#6b7280] hover:text-[#4a4a4a]'
                     }`}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -76,12 +76,12 @@ const Navigation = () => {
                   </motion.span>
                   
                   {/* Hover underline */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-pink transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#023e8a] transition-all duration-300 group-hover:w-full" />
                   
                   {/* Active indicator */}
                   {location.pathname === link.href && (
                     <motion.span 
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-pink"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#023e8a]"
                       layoutId="activeNav"
                       transition={{ duration: 0.3 }}
                     />
@@ -93,17 +93,17 @@ const Navigation = () => {
             {/* CTA Button */}
             <Link to="/contact" className="hidden md:block">
               <motion.button
-                className="px-6 py-3 bg-pink text-black font-display font-bold text-sm tracking-wide hover:bg-white transition-colors"
+                className="px-5 py-2 border border-[#023e8a] text-[#023e8a] font-display font-medium text-sm tracking-wide hover:bg-[#023e8a] hover:text-white transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                GET STARTED
+                Contact
               </motion.button>
             </Link>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-[#2c2420] p-2"
+              className="md:hidden text-[#4a4a4a] p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -135,7 +135,7 @@ const Navigation = () => {
                   <Link
                     to={link.href}
                     className={`text-3xl font-display font-bold ${
-                      location.pathname === link.href ? 'text-pink' : 'text-[#2c2420]'
+                      location.pathname === link.href ? 'text-[#023e8a]' : 'text-[#4a4a4a]'
                     }`}
                   >
                     {link.label}
@@ -150,8 +150,8 @@ const Navigation = () => {
                 transition={{ delay: 0.5 }}
               >
                 <Link to="/contact">
-                  <button className="mt-8 px-8 py-4 bg-pink text-black font-display font-bold">
-                    GET STARTED
+                  <button className="mt-8 px-6 py-3 border border-[#023e8a] text-[#023e8a] font-display">
+                    Contact Us
                   </button>
                 </Link>
               </motion.div>

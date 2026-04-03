@@ -141,7 +141,7 @@ const Contact = () => {
         
         {/* Animated orbs */}
         <motion.div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-pink/5 rounded-full blur-[120px]"
+          className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#023e8a]/5 rounded-full blur-[120px]"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 100, 0],
@@ -160,7 +160,7 @@ const Contact = () => {
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 py-20">
           <div className="max-w-4xl">
             <motion.span 
-              className="text-pink text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -168,12 +168,12 @@ const Contact = () => {
               Get In Touch
             </motion.span>
             
-            <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#2c2420] leading-none tracking-tighter">
-              LET&apos;S <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink via-purple-500 to-cyan-400">TALK</span>
+              <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#4a4a4a] leading-none tracking-tighter">
+              LET&apos;S <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400">TALK</span>
             </h1>
             
             <motion.p 
-              className="mt-8 text-xl text-[#7a6e64] font-body leading-relaxed max-w-2xl"
+              className="mt-8 text-xl text-[#6b7280] font-body leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -187,13 +187,13 @@ const Contact = () => {
 
       {/* Contact Section */}
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4 0%, #faf5f7 50%, #f8f3ec 100%)' }}>
-        <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-gradient-to-b from-pink/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-gradient-to-b from-[#023e8a]/[0.03] to-transparent rounded-full blur-[100px]" />
         <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left - Contact Info */}
             <div className="contact-content">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#2c2420] mb-8">
-                CONTACT <span className="text-pink">INFORMATION</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#4a4a4a] mb-8">
+                CONTACT <span className="text-[#023e8a]">INFORMATION</span>
               </h2>
 
               <div className="space-y-6 mb-12">
@@ -201,7 +201,7 @@ const Contact = () => {
                   <motion.a
                     key={index}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 border border-[#ddd2c4] hover:border-pink/50 transition-all duration-300 group shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
+                    className="flex items-center gap-4 p-4 border border-[#ddd2c4] hover:border-[#023e8a]/50 transition-all duration-300 group shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                     initial={{ opacity: 0, x: -30, scale: 0.95 }}
                     whileInView={{ opacity: 1, x: 0, scale: 1 }}
                     viewport={{ once: true }}
@@ -209,15 +209,15 @@ const Contact = () => {
                     whileHover={{ x: 10, scale: 1.02 }}
                   >
                     <motion.div 
-                      className="w-12 h-12 rounded-lg bg-pink/20 flex items-center justify-center"
+                      className="w-12 h-12 rounded-lg bg-[#023e8a]/20 flex items-center justify-center"
                       whileHover={{ rotate: 360, scale: 1.2 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <item.icon className="w-6 h-6 text-pink" />
+                      <item.icon className="w-6 h-6 text-[#023e8a]" />
                     </motion.div>
                     <div>
-                      <p className="text-[#7a6e64] text-sm font-body">{item.label}</p>
-                      <p className="text-[#2c2420] font-body group-hover:text-pink transition-colors duration-300">{item.value}</p>
+                      <p className="text-[#6b7280] text-sm font-body">{item.label}</p>
+                      <p className="text-[#4a4a4a] font-body group-hover:text-[#023e8a] transition-colors duration-300">{item.value}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -225,13 +225,13 @@ const Contact = () => {
 
               {/* Social Links */}
               <div>
-                <h3 className="text-lg font-display font-bold text-[#2c2420] mb-4">Follow Us</h3>
+                <h3 className="text-lg font-display font-bold text-[#4a4a4a] mb-4">Follow Us</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={index}
                       href={social.href}
-                      className="w-12 h-12 border border-[#ddd2c4] flex items-center justify-center hover:bg-pink hover:border-pink transition-all shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
+                      className="w-12 h-12 border border-[#ddd2c4] flex items-center justify-center hover:bg-[#023e8a] hover:border-[#023e8a] transition-all shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                       aria-label={social.label}
@@ -245,34 +245,34 @@ const Contact = () => {
 
             {/* Right - Contact Form */}
             <div className="contact-content">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#2c2420] mb-8">
-                SEND A <span className="text-pink">MESSAGE</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#4a4a4a] mb-8">
+                SEND A <span className="text-[#023e8a]">MESSAGE</span>
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name & Email */}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[#7a6e64] font-body text-sm mb-2">Your Name *</label>
+                    <label className="block text-[#6b7280] font-body text-sm mb-2">Your Name *</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#2c2420] font-body focus:border-pink focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#4a4a4a] font-body focus:border-[#023e8a] focus:outline-none transition-colors"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-[#7a6e64] font-body text-sm mb-2">Email Address *</label>
+                    <label className="block text-[#6b7280] font-body text-sm mb-2">Email Address *</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#2c2420] font-body focus:border-pink focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#4a4a4a] font-body focus:border-[#023e8a] focus:outline-none transition-colors"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -281,24 +281,24 @@ const Contact = () => {
                 {/* Phone & Company */}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[#7a6e64] font-body text-sm mb-2">Phone Number</label>
+                    <label className="block text-[#6b7280] font-body text-sm mb-2">Phone Number</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#2c2420] font-body focus:border-pink focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#4a4a4a] font-body focus:border-[#023e8a] focus:outline-none transition-colors"
                       placeholder="+91 98765 43210"
                     />
                   </div>
                   <div>
-                    <label className="block text-[#7a6e64] font-body text-sm mb-2">Company</label>
+                    <label className="block text-[#6b7280] font-body text-sm mb-2">Company</label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#2c2420] font-body focus:border-pink focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#4a4a4a] font-body focus:border-[#023e8a] focus:outline-none transition-colors"
                       placeholder="Your Company"
                     />
                   </div>
@@ -306,12 +306,12 @@ const Contact = () => {
 
                 {/* Service Selection */}
                 <div>
-                  <label className="block text-[#7a6e64] font-body text-sm mb-2">Service Interested In</label>
+                    <label className="block text-[#6b7280] font-body text-sm mb-2">Service Interested In</label>
                   <select
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#2c2420] font-body focus:border-pink focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#4a4a4a] font-body focus:border-[#023e8a] focus:outline-none transition-colors"
                   >
                     <option value="" className="bg-white">Select a service</option>
                     {services.map((service, index) => (
@@ -324,14 +324,14 @@ const Contact = () => {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[#7a6e64] font-body text-sm mb-2">Your Message *</label>
+                    <label className="block text-[#6b7280] font-body text-sm mb-2">Your Message *</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#2c2420] font-body focus:border-pink focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-white/80 border border-[#ddd2c4] text-[#4a4a4a] font-body focus:border-[#023e8a] focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   />
                 </div>
@@ -340,7 +340,7 @@ const Contact = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-8 py-4 bg-pink text-white font-display font-bold tracking-wide flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-4 border border-[#c47b8a] text-[#c47b8a] font-display tracking-wide flex items-center justify-center gap-3 hover:bg-[#c47b8a] hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 >
@@ -392,9 +392,9 @@ const Contact = () => {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #f5f0eb, #ede6dd)' }} />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <MapPin className="w-12 h-12 text-pink mx-auto mb-4" />
-              <p className="text-[#2c2420] font-display font-bold text-xl">D Sky Ventures Pvt Ltd</p>
-              <p className="text-[#7a6e64] font-body">123 Tech Park, Bangalore, India</p>
+              <MapPin className="w-12 h-12 text-[#023e8a] mx-auto mb-4" />
+              <p className="text-[#4a4a4a] font-display font-bold text-xl">The Sky Venture</p>
+              <p className="text-[#6b7280] font-body">123 Tech Park, Bangalore, India</p>
             </div>
           </div>
           {/* Grid overlay */}

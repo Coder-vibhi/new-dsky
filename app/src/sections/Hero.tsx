@@ -122,7 +122,7 @@ const Hero = () => {
           <div
             key={cellIndex}
             className={`grid-cell absolute preserve-3d backface-hidden transition-all duration-300 hover:scale-105 hover:z-10 ${
-              isPink ? 'bg-pink' : ''
+              isPink ? 'bg-[#023e8a]' : ''
             }`}
             style={{
               left: `${(col / cols) * 100}%`,
@@ -165,7 +165,7 @@ const Hero = () => {
           {/* Title Line 1 */}
           {heroConfig.titleLine1 && (
             <div className="flex justify-start mb-4">
-              <div className="title-block bg-pink px-8 py-4 pointer-events-auto hover:scale-110 transition-transform duration-300">
+              <div className="title-block bg-[#023e8a] px-8 py-4 pointer-events-auto hover:scale-110 transition-transform duration-300">
                 <span className="font-display font-black text-6xl md:text-8xl lg:text-9xl text-black tracking-tighter">
                   {heroConfig.titleLine1}
                 </span>
@@ -176,7 +176,7 @@ const Hero = () => {
           {/* Title Line 2 */}
           {heroConfig.titleLine2 && (
             <div className="flex justify-end">
-              <div className="title-block bg-pink px-8 py-4 pointer-events-auto hover:scale-110 transition-transform duration-300">
+              <div className="title-block bg-[#023e8a] px-8 py-4 pointer-events-auto hover:scale-110 transition-transform duration-300">
                 <span className="font-display font-black text-6xl md:text-8xl lg:text-9xl text-black tracking-tighter">
                   {heroConfig.titleLine2}
                 </span>
@@ -200,7 +200,7 @@ const Hero = () => {
         <div className="absolute bottom-16 left-0 right-0 flex justify-center z-20">
           <a
             href={heroConfig.ctaHref || '#products'}
-            className="group flex items-center gap-3 px-8 py-4 border-2 border-pink text-pink font-display font-bold text-sm uppercase tracking-wider hover:bg-pink hover:text-black transition-all duration-300"
+            className="group flex items-center gap-3 px-8 py-4 border-2 border-[#023e8a] text-[#023e8a] font-display font-bold text-sm uppercase tracking-wider hover:bg-[#023e8a] hover:text-black transition-all duration-300"
             data-cursor-hover
           >
             {heroConfig.ctaText}
@@ -210,8 +210,8 @@ const Hero = () => {
       )}
 
       {/* Corner decorations */}
-      <div className="absolute top-24 left-6 w-16 h-16 border-l-2 border-t-2 border-pink/30 z-20" />
-      <div className="absolute bottom-24 right-6 w-16 h-16 border-r-2 border-b-2 border-pink/30 z-20" />
+      <div className="absolute top-24 left-6 w-16 h-16 border-l-2 border-t-2 border-[#023e8a]/30 z-20" />
+      <div className="absolute bottom-24 right-6 w-16 h-16 border-r-2 border-b-2 border-[#023e8a]/30 z-20" />
 
       {/* Loading overlay */}
       <div

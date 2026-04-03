@@ -134,11 +134,11 @@ const ProductShowcase = () => {
     >
       {/* Background grid lines */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute left-1/4 top-0 bottom-0 w-px bg-pink" />
-        <div className="absolute left-2/4 top-0 bottom-0 w-px bg-pink" />
-        <div className="absolute left-3/4 top-0 bottom-0 w-px bg-pink" />
-        <div className="absolute top-1/3 left-0 right-0 h-px bg-pink" />
-        <div className="absolute top-2/3 left-0 right-0 h-px bg-pink" />
+        <div className="absolute left-1/4 top-0 bottom-0 w-px bg-[#023e8a]" />
+        <div className="absolute left-2/4 top-0 bottom-0 w-px bg-[#023e8a]" />
+        <div className="absolute left-3/4 top-0 bottom-0 w-px bg-[#023e8a]" />
+        <div className="absolute top-1/3 left-0 right-0 h-px bg-[#023e8a]" />
+        <div className="absolute top-2/3 left-0 right-0 h-px bg-[#023e8a]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12">
@@ -146,15 +146,15 @@ const ProductShowcase = () => {
         <div className="mb-16">
           {productShowcaseConfig.sectionLabel && (
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-px bg-pink" />
-              <span className="font-body text-pink text-sm uppercase tracking-[0.3em]">
+              <div className="w-12 h-px bg-[#023e8a]" />
+              <span className="font-body text-[#023e8a] text-sm uppercase tracking-[0.3em]">
                 {productShowcaseConfig.sectionLabel}
               </span>
             </div>
           )}
           {(productShowcaseConfig.headingMain || productShowcaseConfig.headingAccent) && (
             <h2 className="font-display font-black text-5xl md:text-7xl text-white uppercase tracking-tight">
-              {productShowcaseConfig.headingMain}<span className="text-pink">{productShowcaseConfig.headingAccent}</span>
+              {productShowcaseConfig.headingMain}<span className="text-[#023e8a]">{productShowcaseConfig.headingAccent}</span>
             </h2>
           )}
         </div>
@@ -165,7 +165,7 @@ const ProductShowcase = () => {
           <div className="relative flex items-center justify-center">
             {/* Glow effect */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-64 h-64 md:w-96 md:h-96 bg-pink/20 rounded-full blur-3xl animate-pulse-pink" />
+              <div className="w-64 h-64 md:w-96 md:h-96 bg-[#023e8a]/20 rounded-full blur-3xl animate-pulse-pink" />
             </div>
 
             {/* Product */}
@@ -183,17 +183,17 @@ const ProductShowcase = () => {
               )}
 
               {/* Floating particles */}
-              <div className="absolute -top-8 -right-8 text-pink animate-float">
+              <div className="absolute -top-8 -right-8 text-[#023e8a] animate-float">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <div className="absolute -bottom-4 -left-4 text-pink animate-float" style={{ animationDelay: '1s' }}>
+              <div className="absolute -bottom-4 -left-4 text-[#023e8a] animate-float" style={{ animationDelay: '1s' }}>
                 <Sparkles className="w-4 h-4" />
               </div>
             </div>
 
             {/* Price tag */}
             {productShowcaseConfig.price && (
-              <div className="absolute top-0 right-0 lg:right-12 bg-pink text-black px-6 py-3 font-display font-black text-2xl">
+              <div className="absolute top-0 right-0 lg:right-12 bg-[#023e8a] text-black px-6 py-3 font-display font-black text-2xl">
                 {productShowcaseConfig.price}
               </div>
             )}
@@ -218,8 +218,8 @@ const ProductShowcase = () => {
             {productShowcaseConfig.features.length > 0 && (
               <div className="grid grid-cols-2 gap-6">
                 {productShowcaseConfig.features.map((feature, index) => (
-                  <div key={index} className="border border-white/10 p-6 hover:border-pink transition-colors duration-300">
-                    <div className="text-pink font-display font-black text-3xl mb-2">{feature.value}</div>
+                  <div key={index} className="border border-white/10 p-6 hover:border-[#023e8a] transition-colors duration-300">
+                    <div className="text-[#023e8a] font-display font-black text-3xl mb-2">{feature.value}</div>
                     <div className="font-body text-white/40 text-sm uppercase tracking-wider">
                       {feature.label}
                     </div>
@@ -252,7 +252,7 @@ const ProductShowcase = () => {
             {/* CTA */}
             {productShowcaseConfig.ctaText && (
               <button
-                className="group flex items-center gap-4 px-8 py-4 bg-pink text-black font-display font-bold text-sm uppercase tracking-wider hover:bg-white transition-all duration-300"
+                className="group flex items-center gap-4 px-8 py-4 bg-[#023e8a] text-black font-display font-bold text-sm uppercase tracking-wider hover:bg-white transition-all duration-300"
                 data-cursor-hover
               >
                 <ShoppingBag className="w-5 h-5" />

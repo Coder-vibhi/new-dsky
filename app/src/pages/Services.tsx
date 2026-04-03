@@ -24,7 +24,7 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
   if (service.featured) {
     return (
       <Link to={`/services/${service.id}`}>
-        <div className="group relative cursor-pointer overflow-hidden border-2 border-pink/30 hover:border-pink/60 transition-colors duration-300">
+        <div className="group relative cursor-pointer overflow-hidden border-2 border-[#023e8a]/30 hover:border-[#023e8a]/60 transition-colors duration-300">
           <div className="relative p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center" style={{ background: '#fefcfa' }}>
             {/* Left Content */}
             <div className="flex-1">
@@ -33,27 +33,27 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
               </div>
               
               {service.subtitle && (
-                <p className="text-pink text-xs font-body tracking-[0.2em] uppercase mb-2">{service.subtitle}</p>
+                <p className="text-[#023e8a] text-xs font-body tracking-[0.2em] uppercase mb-2">{service.subtitle}</p>
               )}
 
-              <h3 className="text-2xl md:text-3xl font-display font-black text-[#2c2420] mb-4 group-hover:text-pink transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-display font-black text-[#4a4a4a] mb-4 group-hover:text-[#023e8a] transition-colors duration-300">
                 {service.title}
               </h3>
-              <p className="text-[#7a6e64] font-body leading-relaxed mb-8 max-w-xl">
+              <p className="text-[#6b7280] font-body leading-relaxed mb-8 max-w-xl">
                 {service.description}
               </p>
 
               {/* Features */}
               <div className="flex flex-wrap gap-4 mb-6">
                 {service.features.map((feature, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-[#7a6e64]">
-                    <Check className="w-4 h-4 text-pink" />
+                  <div key={i} className="flex items-center gap-2 text-sm text-[#6b7280]">
+                    <Check className="w-4 h-4 text-[#023e8a]" />
                     {feature}
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center gap-2 text-pink font-body font-semibold">
+              <div className="flex items-center gap-2 text-[#023e8a] font-body font-semibold">
                 <span>Explore Program</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -61,8 +61,8 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
 
             {/* Right Visual */}
             <div className="hidden md:flex items-center justify-center">
-              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-pink/15 to-purple-500/15 flex items-center justify-center">
-                <service.icon className="w-20 h-20 text-pink/50" />
+              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#023e8a]/15 to-purple-500/15 flex items-center justify-center">
+                <service.icon className="w-20 h-20 text-[#023e8a]/50" />
               </div>
             </div>
           </div>
@@ -81,25 +81,25 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
           </div>
 
           {/* Content */}
-          <h3 className="text-xl font-display font-bold text-[#2c2420] mb-3 group-hover:text-pink transition-colors duration-300">
+              <h3 className="text-xl font-display font-bold text-[#4a4a4a] mb-3 group-hover:text-[#023e8a] transition-colors duration-300">
             {service.title}
           </h3>
-          <p className="text-[#7a6e64] font-body text-sm mb-6 flex-grow">
+          <p className="text-[#6b7280] font-body text-sm mb-6 flex-grow">
             {service.description}
           </p>
 
           {/* Features */}
           <ul className="space-y-2 mb-6">
             {service.features.map((feature, i) => (
-              <li key={i} className="flex items-center gap-2 text-sm text-[#7a6e64]">
-                <Check className="w-3.5 h-3.5 text-pink flex-shrink-0" />
+                <li key={i} className="flex items-center gap-2 text-sm text-[#6b7280]">
+                <Check className="w-3.5 h-3.5 text-[#023e8a] flex-shrink-0" />
                 {feature}
               </li>
             ))}
           </ul>
 
           {/* CTA */}
-          <div className="flex items-center gap-2 text-pink/60 group-hover:text-pink transition-all duration-300">
+          <div className="flex items-center gap-2 text-[#023e8a]/60 group-hover:text-[#023e8a] transition-all duration-300">
             <span className="text-xs font-body font-medium">Explore</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </div>
@@ -118,7 +118,7 @@ const Services = () => {
       subtitle: 'Transform Your Career',
       description: 'Industry-leading AI training program with professional certification, internship opportunities, and real-world project experience.',
       features: ['Professional Certificate', 'Internship Opportunity', 'Placement Assistance', 'Letter of Recommendation'],
-      color: 'from-pink to-purple-600',
+      color: 'from-[#023e8a] to-purple-600',
       featured: true
     },
     {
@@ -127,7 +127,7 @@ const Services = () => {
       title: 'Web Development',
       description: 'Custom websites and web applications built with modern technologies for optimal performance.',
       features: ['React & Next.js', 'Node.js Backend', 'E-commerce Solutions', 'CMS Integration'],
-      color: 'from-pink to-rose-500'
+      color: 'from-[#023e8a] to-rose-500'
     },
     {
       id: 'app-development',
@@ -167,7 +167,7 @@ const Services = () => {
       title: 'BPO Services',
       description: 'Business process outsourcing that helps you streamline operations and reduce costs.',
       features: ['Customer Support', 'Data Entry', 'Back Office', 'Technical Support'],
-      color: 'from-red-500 to-pink'
+      color: 'from-[#023e8a] to-[#023e8a]'
     },
     {
       id: 'insurance',
@@ -194,7 +194,7 @@ const Services = () => {
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <motion.span 
-              className="text-pink text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -203,14 +203,14 @@ const Services = () => {
             </motion.span>
             
             <motion.h1 
-              className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-black text-[#2c2420] leading-none tracking-tight"
+              className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-black text-[#4a4a4a] leading-none tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
               OUR{' '}
               <span style={{
-                background: 'linear-gradient(135deg, #ff73c3, #a855f7, #06b6d4)',
+                background: 'linear-gradient(135deg, #c47b8a, #a855f7, #06b6d4)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}>
@@ -219,7 +219,7 @@ const Services = () => {
             </motion.h1>
             
             <motion.p 
-              className="mt-6 text-lg text-[#7a6e64] font-body leading-relaxed max-w-2xl"
+              className="mt-6 text-lg text-[#6b7280] font-body leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -257,7 +257,7 @@ const Services = () => {
             {/* Left Content */}
             <div>
               <motion.span 
-                className="text-pink text-sm font-body tracking-[0.3em] uppercase"
+                className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -266,13 +266,13 @@ const Services = () => {
               </motion.span>
               
               <motion.h2 
-                className="mt-4 text-3xl md:text-4xl font-display font-black text-[#2c2420] mb-8"
+                className="mt-4 text-3xl md:text-4xl font-display font-black text-[#4a4a4a] mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                THE D SKY ADVANTAGE
+                THE SKY ADVANTAGE
               </motion.h2>
 
               <div className="space-y-6">
@@ -289,12 +289,12 @@ const Services = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.2 }}
                   >
-                    <div className="w-10 h-10 rounded-lg bg-pink/20 flex items-center justify-center flex-shrink-0">
-                      <featureItem.icon className="w-5 h-5 text-pink" />
+                    <div className="w-10 h-10 rounded-lg bg-[#023e8a]/20 flex items-center justify-center flex-shrink-0">
+                      <featureItem.icon className="w-5 h-5 text-[#023e8a]" />
                     </div>
                     <div>
-                      <h4 className="text-base font-display font-bold text-[#2c2420]">{featureItem.title}</h4>
-                      <p className="text-[#7a6e64] font-body text-sm">{featureItem.desc}</p>
+                      <h4 className="text-base font-display font-bold text-[#4a4a4a]">{featureItem.title}</h4>
+                      <p className="text-[#6b7280] font-body text-sm">{featureItem.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -318,8 +318,8 @@ const Services = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="text-3xl font-display font-black text-[#2c2420] mb-1">{stat.value}</div>
-                  <div className="text-xs text-[#7a6e64] font-body uppercase tracking-wider">{stat.label}</div>
+                  <div className="text-3xl font-display font-black text-[#4a4a4a] mb-1">{stat.value}</div>
+                  <div className="text-xs text-[#6b7280] font-body uppercase tracking-wider">{stat.label}</div>
                 </motion.div>
               ))}
             </div>

@@ -21,9 +21,9 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <a
               href="#"
-              className="font-display font-black text-4xl text-white hover:text-pink transition-colors duration-300 inline-block mb-6"
+              className="font-display font-black text-4xl text-white hover:text-[#023e8a] transition-colors duration-300 inline-block mb-6"
             >
-              {footerConfig.logo}<span className="text-pink">{footerConfig.logoAccent}</span>
+              {footerConfig.logo}<span className="text-[#023e8a]">{footerConfig.logoAccent}</span>
             </a>
             {footerConfig.brandDescription && (
               <p className="font-body text-white/50 text-sm leading-relaxed mb-8 max-w-sm">
@@ -40,7 +40,7 @@ const Footer = () => {
                     <a
                       key={social.label}
                       href={social.href}
-                      className="w-12 h-12 border border-white/20 flex items-center justify-center text-white/50 hover:text-pink hover:border-pink transition-all duration-300"
+                      className="w-12 h-12 border border-white/20 flex items-center justify-center text-white/50 hover:text-[#023e8a] hover:border-[#023e8a] transition-all duration-300"
                       data-cursor-hover
                       aria-label={social.label}
                     >
@@ -63,7 +63,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href="#"
-                      className="font-body text-white/50 text-sm hover:text-pink transition-colors duration-300"
+                      className="font-body text-white/50 text-sm hover:text-[#023e8a] transition-colors duration-300"
                       data-cursor-hover
                     >
                       {link}
@@ -81,19 +81,19 @@ const Footer = () => {
             <div className="flex flex-wrap gap-8 justify-center lg:justify-start">
               {footerConfig.contact.address && (
                 <div className="flex items-center gap-3 text-white/40">
-                  <MapPin className="w-4 h-4 text-pink" />
+                  <MapPin className="w-4 h-4 text-[#023e8a]" />
                   <span className="font-body text-sm">{footerConfig.contact.address}</span>
                 </div>
               )}
               {footerConfig.contact.phone && (
                 <div className="flex items-center gap-3 text-white/40">
-                  <Phone className="w-4 h-4 text-pink" />
+                  <Phone className="w-4 h-4 text-[#023e8a]" />
                   <span className="font-body text-sm">{footerConfig.contact.phone}</span>
                 </div>
               )}
               {footerConfig.contact.email && (
                 <div className="flex items-center gap-3 text-white/40">
-                  <Mail className="w-4 h-4 text-pink" />
+                  <Mail className="w-4 h-4 text-[#023e8a]" />
                   <span className="font-body text-sm">{footerConfig.contact.email}</span>
                 </div>
               )}
@@ -116,7 +116,7 @@ const Footer = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-body text-white/30 text-xs hover:text-pink transition-colors duration-300"
+                  className="font-body text-white/30 text-xs hover:text-[#023e8a] transition-colors duration-300"
                   data-cursor-hover
                 >
                   {link.label}

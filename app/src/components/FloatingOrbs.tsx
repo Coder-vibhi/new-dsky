@@ -63,7 +63,7 @@ const FloatingOrbs = () => {
       {[...Array(5)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-4 h-4 rounded-full bg-pink/30"
+          className="absolute w-4 h-4 rounded-full bg-[#023e8a]/30"
           style={{
             left: `${20 + i * 15}%`,
             top: `${30 + (i % 3) * 20}%`,

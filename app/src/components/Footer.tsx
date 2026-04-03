@@ -21,18 +21,18 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="inline-block">
-              <div className="text-2xl font-display font-black text-[#2c2420] tracking-tighter">
-                D SKY<span className="text-pink">.</span>
+              <div className="text-2xl font-display font-black text-[#4a4a4a] tracking-tighter">
+                The Sky <span className="text-[#023e8a]">Venture</span>
               </div>
             </Link>
-            <p className="mt-4 text-[#7a6e64] font-body text-sm max-w-xs leading-relaxed">
+            <p className="mt-4 text-[#6b7280] font-body text-sm max-w-xs leading-relaxed">
               Transforming businesses through innovative digital solutions.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-[#2c2420] font-display font-bold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
+            <h4 className="text-[#4a4a4a] font-display font-bold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-2">
               {[
                 { label: 'About Us', href: '/about' },
@@ -41,7 +41,7 @@ const Footer = () => {
                 { label: 'Contact', href: '/contact' },
               ].map((link, index) => (
                 <li key={index}>
-                  <Link to={link.href} className="text-[#7a6e64] font-body text-sm hover:text-pink transition-colors">
+                  <Link to={link.href} className="text-[#6b7280] font-body text-sm hover:text-[#023e8a] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -51,16 +51,16 @@ const Footer = () => {
 
           {/* Social */}
           <div>
-            <h4 className="text-[#2c2420] font-display font-bold mb-4 text-sm uppercase tracking-wider">Follow Us</h4>
+            <h4 className="text-[#4a4a4a] font-display font-bold mb-4 text-sm uppercase tracking-wider">Follow Us</h4>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-white/60 border border-[#ddd2c4] flex items-center justify-center hover:bg-pink hover:border-pink transition-all"
+                  className="w-10 h-10 bg-white/60 border border-[#ddd2c4] flex items-center justify-center hover:bg-[#023e8a] hover:border-[#023e8a] transition-all"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4 text-[#7a6e64] hover:text-white transition-colors" />
+                  <social.icon className="w-4 h-4 text-[#6b7280] hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
@@ -71,16 +71,16 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="w-full px-6 md:px-12 lg:px-20 py-4 border-t border-[#ddd2c4]">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#7a6e64] font-body text-xs">
-            &copy; {new Date().getFullYear()} D Sky Ventures Pvt Ltd. All rights reserved.
+          <p className="text-[#6b7280] font-body text-xs">
+            &copy; {new Date().getFullYear()} The Sky Venture. All rights reserved.
           </p>
 
           <button
             onClick={scrollToTop}
-            className="w-8 h-8 bg-pink flex items-center justify-center hover:bg-pink/90 transition-colors"
+            className="w-8 h-8 border border-[#ddd2c4] flex items-center justify-center hover:border-[#023e8a] hover:bg-[#023e8a]/5 transition-all"
             aria-label="Back to top"
           >
-            <ArrowUp className="w-4 h-4 text-white" />
+            <ArrowUp className="w-4 h-4 text-[#6b7280]" />
           </button>
         </div>
       </div>

@@ -112,7 +112,7 @@ const Particles = ({ count = 100, mousePosition }: ParticlesProps) => {
       <points ref={mesh} geometry={pointsGeometry}>
         <pointsMaterial
           size={0.05}
-          color="#ff73c3"
+          color="#c47b8a"
           transparent
           opacity={0.8}
           sizeAttenuation
@@ -120,7 +120,7 @@ const Particles = ({ count = 100, mousePosition }: ParticlesProps) => {
       </points>
       
       <lineSegments ref={linesMesh} geometry={linesGeometry}>
-        <lineBasicMaterial color="#ff73c3" transparent opacity={0.1} />
+        <lineBasicMaterial color="#c47b8a" transparent opacity={0.1} />
       </lineSegments>
     </>
   );
@@ -140,7 +140,7 @@ const FloatingShape = () => {
     <mesh ref={meshRef} position={[5, 0, -5]}>
       <torusKnotGeometry args={[1, 0.3, 100, 16]} />
       <meshStandardMaterial
-        color="#ff73c3"
+        color="#c47b8a"
         wireframe
         transparent
         opacity={0.3}
@@ -172,7 +172,7 @@ const ParticleBackground = () => {
         gl={{ antialias: true, alpha: true }}
       >
         <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} color="#ff73c3" intensity={0.5} />
+        <pointLight position={[10, 10, 10]} color="#c47b8a" intensity={0.5} />
         <pointLight position={[-10, -10, -10]} color="#8b5cf6" intensity={0.5} />
         <Particles count={80} mousePosition={mousePosition} />
         <FloatingShape />

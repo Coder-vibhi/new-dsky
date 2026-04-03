@@ -134,7 +134,7 @@ const Finale = () => {
       {/* Diagonal split line */}
       <div
         ref={diagonalRef}
-        className="absolute top-0 left-[60%] w-px h-[200%] bg-pink origin-top z-20"
+        className="absolute top-0 left-[60%] w-px h-[200%] bg-[#023e8a] origin-top z-20"
         style={{ transform: 'rotate(15deg)' }}
       />
 
@@ -144,8 +144,8 @@ const Finale = () => {
           <div ref={textRef} className="max-w-2xl">
             {finaleConfig.sectionLabel && (
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-px bg-pink" />
-                <span className="font-body text-pink text-sm uppercase tracking-[0.3em]">
+                <div className="w-16 h-px bg-[#023e8a]" />
+                <span className="font-body text-[#023e8a] text-sm uppercase tracking-[0.3em]">
                   {finaleConfig.sectionLabel}
                 </span>
               </div>
@@ -155,7 +155,7 @@ const Finale = () => {
               <h2 className="glitch-title font-display font-black text-5xl md:text-7xl lg:text-8xl text-white uppercase tracking-tight mb-8 leading-none">
                 {finaleConfig.headingMain}
                 <br />
-                <span className="text-pink">{finaleConfig.headingAccent}</span>
+                <span className="text-[#023e8a]">{finaleConfig.headingAccent}</span>
               </h2>
             )}
 
@@ -169,7 +169,7 @@ const Finale = () => {
               <div className="flex flex-wrap gap-6 mb-12">
                 {finaleConfig.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-pink" />
+                    <div className="w-3 h-3 bg-[#023e8a]" />
                     <span className="font-body text-white/40 text-sm uppercase tracking-wider">
                       {feature}
                     </span>
@@ -181,7 +181,7 @@ const Finale = () => {
             {finaleConfig.ctaText && (
               <a
                 href={finaleConfig.ctaHref || '#'}
-                className="group inline-flex items-center gap-4 px-8 py-4 bg-pink text-black font-display font-bold text-sm uppercase tracking-wider hover:bg-white transition-all duration-300"
+                className="group inline-flex items-center gap-4 px-8 py-4 bg-[#023e8a] text-black font-display font-bold text-sm uppercase tracking-wider hover:bg-white transition-all duration-300"
                 data-cursor-hover
               >
                 {finaleConfig.ctaText}
@@ -209,8 +209,8 @@ const Finale = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent" />
 
               {/* Pink accent border */}
-              <div className="absolute top-8 right-8 bottom-8 w-px bg-pink/50" />
-              <div className="absolute top-8 right-8 left-8 h-px bg-pink/50" />
+              <div className="absolute top-8 right-8 bottom-8 w-px bg-[#023e8a]/50" />
+              <div className="absolute top-8 right-8 left-8 h-px bg-[#023e8a]/50" />
             </div>
           </div>
         )}

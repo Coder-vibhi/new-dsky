@@ -43,8 +43,8 @@ const projectData: Record<string, {
     timeline: '6 months',
     team: '8 members',
     client: 'Luxury Retail Brand',
-    color: 'from-pink to-rose-500',
-    gradient: 'from-pink/40 to-rose-500/50'
+    color: 'from-[#023e8a] to-rose-500',
+    gradient: 'from-[#023e8a]/40 to-rose-500/50'
   },
   'fintech-app': {
     title: 'FinFlow',
@@ -148,8 +148,8 @@ const projectData: Record<string, {
     timeline: '9 months',
     team: '9 members',
     client: 'Social Media Startup',
-    color: 'from-red-500 to-pink',
-    gradient: 'from-red-500/50 to-pink/50'
+    color: 'from-[#023e8a] to-[#023e8a]',
+    gradient: 'from-[#023e8a]/50 to-[#023e8a]/50'
   }
 };
 
@@ -187,8 +187,8 @@ const ProjectDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }}>
         <div className="text-center">
-          <h1 className="text-4xl font-display font-bold text-[#2c2420] mb-4">Project Not Found</h1>
-          <Link to="/portfolio" className="text-pink hover:underline">
+          <h1 className="text-4xl font-display font-bold text-[#4a4a4a] mb-4">Project Not Found</h1>
+          <Link to="/portfolio" className="text-[#023e8a] hover:underline">
             Back to Portfolio
           </Link>
         </div>
@@ -221,7 +221,7 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <Link to="/portfolio" className="inline-flex items-center gap-2 text-[#7a6e64] hover:text-pink transition-colors mb-8">
+            <Link to="/portfolio" className="inline-flex items-center gap-2 text-[#6b7280] hover:text-[#023e8a] transition-colors mb-8">
               <ArrowLeft className="w-5 h-5" />
               <span className="font-body">Back to Portfolio</span>
             </Link>
@@ -239,12 +239,12 @@ const ProjectDetail = () => {
                 {project.category}
               </motion.span>
             
-            <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#2c2420] leading-none tracking-tighter">
+            <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#4a4a4a] leading-none tracking-tighter">
               {project.title.toUpperCase()}
             </h1>
             
             <motion.p 
-              className="mt-8 text-xl text-[#7a6e64] font-body leading-relaxed max-w-2xl"
+              className="mt-8 text-xl text-[#6b7280] font-body leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -260,16 +260,16 @@ const ProjectDetail = () => {
               transition={{ delay: 0.5 }}
             >
               <div className="flex items-center gap-3">
-                <Calendar className="w-5 h-5 text-pink" />
-                <span className="text-[#7a6e64] font-body">{project.timeline}</span>
+                <Calendar className="w-5 h-5 text-[#023e8a]" />
+                <span className="text-[#6b7280] font-body">{project.timeline}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Users className="w-5 h-5 text-pink" />
-                <span className="text-[#7a6e64] font-body">{project.team}</span>
+                <Users className="w-5 h-5 text-[#023e8a]" />
+                <span className="text-[#6b7280] font-body">{project.team}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Target className="w-5 h-5 text-pink" />
-                <span className="text-[#7a6e64] font-body">{project.client}</span>
+                <Target className="w-5 h-5 text-[#023e8a]" />
+                <span className="text-[#6b7280] font-body">{project.client}</span>
               </div>
             </motion.div>
           </div>
@@ -293,39 +293,39 @@ const ProjectDetail = () => {
 
       {/* Overview Section */}
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4, #f8f3ec, #faf5f7)' }}>
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-pink/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-[#023e8a]/[0.03] to-transparent rounded-full blur-[100px]" />
         <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left - Description */}
             <div className="detail-section">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#2c2420] mb-6">
-                PROJECT <span className="text-pink">OVERVIEW</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#4a4a4a] mb-6">
+                PROJECT <span className="text-[#023e8a]">OVERVIEW</span>
               </h2>
-              <p className="text-[#7a6e64] font-body leading-relaxed mb-8">
+              <p className="text-[#6b7280] font-body leading-relaxed mb-8">
                 {project.longDescription}
               </p>
 
-              <h3 className="text-xl font-display font-bold text-[#2c2420] mb-4">The Challenge</h3>
-              <p className="text-[#7a6e64] font-body leading-relaxed mb-8">
+              <h3 className="text-xl font-display font-bold text-[#4a4a4a] mb-4">The Challenge</h3>
+              <p className="text-[#6b7280] font-body leading-relaxed mb-8">
                 {project.challenge}
               </p>
 
-              <h3 className="text-xl font-display font-bold text-[#2c2420] mb-4">Our Solution</h3>
-              <p className="text-[#7a6e64] font-body leading-relaxed">
+              <h3 className="text-xl font-display font-bold text-[#4a4a4a] mb-4">Our Solution</h3>
+              <p className="text-[#6b7280] font-body leading-relaxed">
                 {project.solution}
               </p>
             </div>
 
             {/* Right - Technologies */}
             <div className="detail-section">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#2c2420] mb-6">
-                TECHNOLOGY <span className="text-pink">STACK</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#4a4a4a] mb-6">
+                TECHNOLOGY <span className="text-[#023e8a]">STACK</span>
               </h2>
               <div className="flex flex-wrap gap-3">
                   {project.technologies.map((tech, index) => (
                     <motion.span
                       key={index}
-                      className="px-4 py-2 border border-[#ddd2c4] text-[#7a6e64] font-body text-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
+                      className="px-4 py-2 border border-[#ddd2c4] text-[#6b7280] font-body text-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -347,7 +347,7 @@ const ProjectDetail = () => {
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span 
-              className="text-pink text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -355,13 +355,13 @@ const ProjectDetail = () => {
               Results
             </motion.span>
             <motion.h2 
-              className="mt-4 text-4xl md:text-5xl font-display font-black text-[#2c2420]"
+              className="mt-4 text-4xl md:text-5xl font-display font-black text-[#4a4a4a]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              PROJECT <span className="text-pink">OUTCOMES</span>
+              PROJECT <span className="text-[#023e8a]">OUTCOMES</span>
             </motion.h2>
           </div>
 
@@ -377,13 +377,13 @@ const ProjectDetail = () => {
                 whileHover={{ borderColor: 'rgba(255,115,195,0.5)', y: -5, scale: 1.03 }}
               >
                 <motion.div 
-                  className="w-12 h-12 rounded-lg bg-pink/20 flex items-center justify-center mb-4"
+                  className="w-12 h-12 rounded-lg bg-[#023e8a]/20 flex items-center justify-center mb-4"
                   whileHover={{ rotate: 360, scale: 1.2 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Zap className="w-6 h-6 text-pink" />
+                  <Zap className="w-6 h-6 text-[#023e8a]" />
                 </motion.div>
-                <p className="text-[#7a6e64] font-body group-hover:text-[#2c2420] transition-colors">{result}</p>
+                <p className="text-[#6b7280] font-body group-hover:text-[#4a4a4a] transition-colors">{result}</p>
               </motion.div>
             ))}
           </div>
@@ -396,15 +396,15 @@ const ProjectDetail = () => {
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
-              className="text-4xl md:text-5xl font-display font-black text-[#2c2420] mb-6"
+              className="text-4xl md:text-5xl font-display font-black text-[#4a4a4a] mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              LIKE WHAT YOU <span className="text-pink">SEE?</span>
+              LIKE WHAT YOU <span className="text-[#023e8a]">SEE?</span>
             </motion.h2>
             <motion.p 
-              className="text-lg text-[#7a6e64] font-body mb-10 max-w-2xl mx-auto"
+              className="text-lg text-[#6b7280] font-body mb-10 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -421,9 +421,9 @@ const ProjectDetail = () => {
             >
               <Link to="/contact">
                 <motion.button
-                  className="px-10 py-5 bg-pink text-white font-display font-bold text-lg tracking-wide flex items-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border border-[#c47b8a] text-[#c47b8a] font-display text-lg tracking-wide flex items-center gap-3 hover:bg-[#c47b8a] hover:text-white transition-all"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   START A PROJECT
                   <ExternalLink className="w-5 h-5" />

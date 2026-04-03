@@ -136,16 +136,16 @@ const ColorPalette = () => {
         <div className="mb-16 text-center">
           {colorPaletteConfig.sectionLabel && (
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-12 h-px bg-pink" />
-              <span className="font-body text-pink text-sm uppercase tracking-[0.3em]">
+              <div className="w-12 h-px bg-[#023e8a]" />
+              <span className="font-body text-[#023e8a] text-sm uppercase tracking-[0.3em]">
                 {colorPaletteConfig.sectionLabel}
               </span>
-              <div className="w-12 h-px bg-pink" />
+              <div className="w-12 h-px bg-[#023e8a]" />
             </div>
           )}
           {(colorPaletteConfig.headingMain || colorPaletteConfig.headingAccent) && (
             <h2 className="font-display font-black text-5xl md:text-7xl text-white uppercase tracking-tight">
-              {colorPaletteConfig.headingMain}<span className="text-pink">{colorPaletteConfig.headingAccent}</span>
+              {colorPaletteConfig.headingMain}<span className="text-[#023e8a]">{colorPaletteConfig.headingAccent}</span>
             </h2>
           )}
         </div>
@@ -159,7 +159,7 @@ const ColorPalette = () => {
             <div
               key={swatch.nameSecondary}
               className={`color-card relative bg-black preserve-3d cursor-pointer group overflow-hidden ${
-                activeIndex === index ? 'ring-2 ring-pink z-10' : ''
+                activeIndex === index ? 'ring-2 ring-[#023e8a] z-10' : ''
               }`}
               onClick={(e) => handleCardClick(e, swatch.color, index)}
               data-cursor-hover
@@ -175,7 +175,7 @@ const ColorPalette = () => {
                 <span className="font-display font-black text-xl text-white mb-1">
                   {swatch.nameSecondary}
                 </span>
-                <span className="font-body text-pink text-sm mb-2">
+                <span className="font-body text-[#023e8a] text-sm mb-2">
                   {swatch.name}
                 </span>
                 <span className="font-body text-white/60 text-xs">

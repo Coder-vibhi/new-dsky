@@ -83,7 +83,7 @@ const CustomCursor = () => {
 
     gsap.to(cursor, {
       scale: isHovering ? 2 : 1,
-      borderColor: isHovering ? '#ff73c3' : 'rgba(255, 115, 195, 0.5)',
+      borderColor: isHovering ? '#023e8a' : 'rgba(196, 123, 138, 0.5)',
       duration: 0.3,
       ease: 'power2.out'
     });
@@ -96,14 +96,14 @@ const CustomCursor = () => {
       {/* Outer ring */}
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-pink/50 pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-[#023e8a]/50 pointer-events-none z-[9999]"
         style={{ opacity: 0, mixBlendMode: 'multiply' }}
       />
       
       {/* Inner dot */}
       <div
         ref={cursorDotRef}
-        className="fixed top-0 left-0 w-1 h-1 -ml-0.5 -mt-0.5 bg-pink rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-1 h-1 -ml-0.5 -mt-0.5 bg-[#023e8a] rounded-full pointer-events-none z-[9999]"
         style={{ opacity: 0 }}
       />
     </>
