@@ -44,7 +44,7 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(160deg, #f8f3ec 0%, #f2ece4 40%, #faf5f7 100%)' }}>
+    <div className="relative min-h-screen overflow-x-hidden bg-white">
       {/* Navigation */}
       <Navigation />
       

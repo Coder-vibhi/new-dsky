@@ -67,18 +67,17 @@ const Loader = () => {
       {/* Logo */}
       <div 
         ref={logoRef}
-        className="relative z-10 perspective-1000"
+        className="relative z-10 perspective-1000 flex flex-col items-center"
       >
-        <div className="text-6xl md:text-8xl font-display font-black text-[#4a4a4a] tracking-tighter">
-          The Sky <span className="text-[#023e8a]">Venture</span>
-        </div>
-        <div className="text-sm md:text-base font-body text-[#6b7280] tracking-[0.3em] uppercase mt-2 text-center">
-          Ventures Pvt Ltd
-        </div>
+        <img 
+          src="/images/logo.png" 
+          alt="The Sky Venture" 
+          className="w-64 md:w-80 lg:w-96 object-contain drop-shadow-xl"
+        />
       </div>
 
       {/* Progress bar */}
-      <div className="mt-12 w-48 h-[2px] bg-[#ddd2c4] rounded-full overflow-hidden">
+      <div className="mt-0 w-48 h-[2px] bg-[#ddd2c4] rounded-full overflow-hidden">
         <div 
           ref={progressRef}
           className="h-full bg-gradient-to-r from-[#023e8a] via-purple-500 to-[#023e8a] origin-left"
@@ -88,7 +87,7 @@ const Loader = () => {
       {/* Loading text */}
       <div 
         ref={textRef}
-        className="mt-6 text-[#6b7280] text-xs font-body tracking-[0.2em] uppercase"
+        className="mt-3 text-[#6b7280] text-xs font-body tracking-[0.2em] uppercase"
       >
         Loading Experience
       </div>

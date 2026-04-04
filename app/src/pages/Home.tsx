@@ -1,498 +1,30 @@
-// // import { useRef, useEffect, useState } from 'react';
-// // import { motion, useScroll, useTransform } from 'framer-motion';
-// // import { Link } from 'react-router-dom';
-// // import type { LucideIcon } from 'lucide-react';
-// // import {
-// //   Code, Smartphone, Palette, Globe,
-// //   ArrowRight, Sparkles
-// // } from 'lucide-react';
-
-// // const services: Array<{
-// //   id: string;
-// //   icon: LucideIcon;
-// //   title: string;
-// //   description: string;
-// //   color: string;
-// // }> = [
-// //     { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies.', color: 'from-[#023e8a] to-rose-500' },
-// //     { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications for all devices.', color: 'from-purple-500 to-violet-500' },
-// //     { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality.', color: 'from-cyan-500 to-blue-500' },
-// //     { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing to increase visibility and drive traffic.', color: 'from-emerald-500 to-teal-500' },
-// //   ];
-
-// // // const stats = [
-// // //   { value: '150+', label: 'Projects Delivered' },
-// // //   { value: '50+', label: 'Happy Clients' },
-// // //   { value: '8+', label: 'Years Experience' },
-// // //   { value: '24/7', label: 'Support' },
-// // // ];
-
-// // // Animated counter
-// // // const AnimatedCounter = ({ value }: { value: string }) => {
-// //   const [display, setDisplay] = useState('0');
-// //   const ref = useRef<HTMLSpanElement>(null);
-// //   const [hasAnimated, setHasAnimated] = useState(false);
-
-// //   useEffect(() => {
-// //     const observer = new IntersectionObserver(
-// //       ([entry]) => {
-// //         if (entry.isIntersecting && !hasAnimated) {
-// //           setHasAnimated(true);
-// //           const num = parseInt(value);
-// //           if (isNaN(num)) {
-// //             setDisplay(value);
-// //             return;
-// //           }
-// //           const suffix = value.replace(/[0-9]/g, '');
-// //           const duration = 2000;
-// //           const startTime = Date.now();
-// //           const animate = () => {
-// //             const elapsed = Date.now() - startTime;
-// //             const progress = Math.min(elapsed / duration, 1);
-// //             const eased = 1 - Math.pow(1 - progress, 3);
-// //             const current = Math.round(eased * num);
-// //             setDisplay(current + suffix);
-// //             if (progress < 1) requestAnimationFrame(animate);
-// //           };
-// //           requestAnimationFrame(animate);
-// //         }
-// //       },
-// //       { threshold: 0.5 }
-// //     );
-// //     if (ref.current) observer.observe(ref.current);
-// //     return () => observer.disconnect();
-// //   }, [value, hasAnimated]);
-
-// //   return <span ref={ref}>{display}</span>;
-// // };
-
-// // const Home = () => {
-// //   const { scrollYProgress } = useScroll();
-// //   const videoOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-
-// //   return (
-// //     <div className="relative">
-// //       {/* Video stays fixed at top, disappears when scrolled past */}
-// //       <motion.div 
-// //         className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden"
-// //         style={{ opacity: videoOpacity }}
-// //       >
-// //         <div className="absolute inset-0 bg-black" />
-// //         <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none bg-black"
-// //           style={{ width: '150vw', height: '84.375vw', maxHeight: '150vh', maxWidth: '266.67vh' }}
-// //         >
-// //           <iframe
-// //             src="https://www.youtube.com/embed/UolciECwp7Y?autoplay=1&mute=1&loop=1&playlist=UolciECwp7Y&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1"
-// //             title="Background Video"
-// //             className="w-full h-full border-0"
-// //             allow="autoplay; encrypted-media"
-// //             loading="eager"
-// //           />
-// //         </div>
-// //         <div className="absolute inset-0 bg-black/40" />
-// //       </motion.div>
-
-// //       {/* Content scrolls normally after video */}
-// //       <div className="relative z-10">
-        
-// //         {/* Hero Content - Over video */}
-// //         <section className="h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
-// //           {/* Brand Name */}
-// //           <motion.div
-// //             className="mb-6"
-// //             initial={{ opacity: 0, y: 20 }}
-// //             animate={{ opacity: 1, y: 0 }}
-// //             transition={{ delay: 0.2, duration: 0.8 }}
-// //           >
-// //             <div className="flex items-center gap-3 mb-2">
-// //               <div className="w-8 h-[2px] bg-[#023e8a]" />
-// //               <Sparkles className="w-4 h-4 text-[#023e8a]" />
-// //             </div>
-// //             <h2 className="text-lg md:text-xl font-body font-bold tracking-[0.25em] uppercase text-white">
-// //               The Sky <span className="text-[#023e8a]">Venture</span>
-// //             </h2>
-// //             <div className="flex items-center gap-3 mt-2">
-// //               <div className="w-20 h-[1px] bg-white/20" />
-// //               <span className="text-white/40 text-[10px] font-body tracking-[0.2em]">EST. 2018</span>
-// //             </div>
-// //           </motion.div>
-
-// //           {/* Main Heading */}
-// //           <div className="overflow-hidden">
-// //             <motion.h1
-// //               className="text-4xl md:text-5xl lg:text-[4rem] font-display font-black text-white leading-[1.1] tracking-tight"
-// //               initial={{ opacity: 0 }}
-// //               animate={{ opacity: 1 }}
-// //               transition={{ delay: 0.3, duration: 0.8 }}
-// //             >
-// //               <motion.span
-// //                 className="inline-block mr-3"
-// //                 initial={{ y: 40, opacity: 0 }}
-// //                 animate={{ y: 0, opacity: 1 }}
-// //                 transition={{ delay: 0.4, duration: 0.6 }}
-// //               >
-// //                 WE
-// //               </motion.span>
-// //               <motion.span
-// //                 className="inline-block font-playfair italic mr-3"
-// //                 initial={{ y: 40, opacity: 0 }}
-// //                 animate={{ y: 0, opacity: 1 }}
-// //                 transition={{ delay: 0.5, duration: 0.6 }}
-// //               >
-// //                 BUILD
-// //               </motion.span>
-// //               <motion.span
-// //                 className="inline-block text-[#023e8a]"
-// //                 initial={{ y: 40, opacity: 0 }}
-// //                 animate={{ y: 0, opacity: 1 }}
-// //                 transition={{ delay: 0.6, duration: 0.6 }}
-// //               >
-// //                 DIGITAL
-// //               </motion.span>
-// //               <br />
-// //               <motion.span
-// //                 className="inline-block"
-// //                 initial={{ y: 40, opacity: 0 }}
-// //                 animate={{ y: 0, opacity: 1 }}
-// //                 transition={{ delay: 0.7, duration: 0.6 }}
-// //               >
-// //                 FUTURE
-// //               </motion.span>
-// //             </motion.h1>
-// //           </div>
-
-// //           {/* Subtitle */}
-// //           <motion.p
-// //             className="mt-6 text-sm md:text-base text-white/60 font-body max-w-md leading-relaxed"
-// //             initial={{ opacity: 0, y: 20 }}
-// //             animate={{ opacity: 1, y: 0 }}
-// //             transition={{ delay: 0.9, duration: 0.6 }}
-// //           >
-// //             Premium IT solutions that transform your
-// //             business vision into reality.
-// //           </motion.p>
-
-// //           {/* Scroll Indicator */}
-// //           <motion.div
-// //             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-// //             initial={{ opacity: 0 }}
-// //             animate={{ opacity: 1 }}
-// //             transition={{ delay: 1.8, duration: 1 }}
-// //           >
-// //             <span className="text-white/40 text-[10px] font-body tracking-[0.4em] uppercase">Scroll</span>
-// //             <motion.div
-// //               className="w-[1px] h-10 bg-gradient-to-b from-[#023e8a] to-transparent relative overflow-hidden"
-// //             >
-// //               <motion.div
-// //                 className="absolute top-0 left-0 w-full h-3 bg-white"
-// //                 animate={{ y: [0, 40, 0] }}
-// //                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-// //               />
-// //             </motion.div>
-// //           </motion.div>
-// //         </section>
-
-// //         {/* Services Section */}
-// //         <section className="py-32 px-6 md:px-16 lg:px-24" style={{ background: 'linear-gradient(180deg, #f2ece4 0%, #f8f3ec 50%, #faf5f7 100%)' }}>
-// //           <div className="max-w-7xl mx-auto">
-// //             <motion.div
-// //               className="flex items-center gap-3 mb-4"
-// //               initial={{ opacity: 0 }}
-// //               whileInView={{ opacity: 1 }}
-// //               viewport={{ once: true }}
-// //             >
-// //               <div className="w-8 h-[2px] bg-[#023e8a]" />
-// //               <span className="text-[#023e8a] text-xs font-body tracking-[0.3em] uppercase">What We Offer</span>
-// //             </motion.div>
-// //             <motion.h2
-// //               className="text-3xl md:text-4xl font-display font-black text-[#4a4a4a] tracking-tight mb-12"
-// //               initial={{ opacity: 0, y: 20 }}
-// //               whileInView={{ opacity: 1, y: 0 }}
-// //               viewport={{ once: true }}
-// //               transition={{ delay: 0.1, duration: 0.6 }}
-// //             >
-// //               OUR SERVICES
-// //             </motion.h2>
-
-// //             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-// //               {services.map((service, index) => (
-// //                 <motion.div
-// //                   key={service.id}
-// //                   initial={{ opacity: 0, y: 20 }}
-// //                   whileInView={{ opacity: 1, y: 0 }}
-// //                   viewport={{ once: true }}
-// //                   transition={{ delay: index * 0.08, duration: 0.5 }}
-// //                 >
-// //                   <Link to={`/services/${service.id}`}>
-// //                     <div className="group relative cursor-pointer overflow-hidden h-full border border-[#ddd2c4]">
-// //                       <div className="p-6 transition-colors duration-500 h-full flex flex-col" style={{ background: '#fefcfa' }}>
-// //                         {/* Icon */}
-// //                         <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}>
-// //                           <service.icon className="w-5 h-5 text-white" />
-// //                         </div>
-
-// //                         {/* Title */}
-// //                         <h3 className="text-base font-display font-bold text-[#4a4a4a] group-hover:text-[#023e8a] transition-colors duration-300 mb-2">
-// //                           {service.title}
-// //                         </h3>
-
-// //                         {/* Description */}
-// //                         <p className="text-[#6b7280] text-xs font-body leading-relaxed flex-grow">
-// //                           {service.description}
-// //                         </p>
-
-// //                         {/* Bottom CTA */}
-// //                         <div className="mt-4 flex items-center gap-2 text-[#023e8a] group-hover:text-[#023e8a] transition-all duration-300">
-// //                           <span className="text-xs font-body font-medium tracking-wide">Explore</span>
-// //                           <ArrowRight className="w-3 h-3" />
-// //                         </div>
-// //                       </div>
-// //                     </div>
-// //                   </Link>
-// //                 </motion.div>
-// //               ))}
-// //             </div>
-
-// //             <motion.div
-// //               className="mt-10"
-// //               initial={{ opacity: 0 }}
-// //               whileInView={{ opacity: 1 }}
-// //               viewport={{ once: true }}
-// //             >
-// //               <Link to="/services" className="inline-flex items-center gap-2 text-[#4a4a4a] font-body font-medium hover:text-[#023e8a] transition-colors">
-// //                 View All Services
-// //                 <ArrowRight className="w-4 h-4" />
-// //               </Link>
-// //             </motion.div>
-// //           </div>
-// //         </section>
-
-// //         {/* CTA Section */}
-// //         <section className="py-32 px-6 md:px-16 lg:px-24" style={{ background: '#023e8a' }}>
-// //           <div className="max-w-3xl mx-auto text-center">
-// //             <motion.div
-// //               initial={{ opacity: 0, y: 20 }}
-// //               whileInView={{ opacity: 1, y: 0 }}
-// //               viewport={{ once: true }}
-// //               transition={{ duration: 0.6 }}
-// //             >
-// //               <p className="text-white/60 text-xs font-body tracking-[0.3em] uppercase mb-4">Get In Touch</p>
-// //               <h2 className="text-3xl md:text-5xl font-display font-black text-white tracking-tight leading-tight">
-// //                 Ready to Start Your Project?
-// //               </h2>
-// //               <p className="mt-6 text-white/70 font-body max-w-lg mx-auto leading-relaxed">
-// //                 Let&apos;s build something extraordinary together. Reach out and let&apos;s discuss your vision.
-// //               </p>
-// //               <Link to="/contact">
-// //                 <button className="mt-10 px-8 py-3 bg-white text-[#023e8a] font-body font-bold tracking-wide hover:bg-black hover:text-white transition-all">
-// //                   Contact Us
-// //                 </button>
-// //               </Link>
-// //             </motion.div>
-// //           </div>
-// //         </section>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Home;
-
-
-// import { useRef, useEffect, useState } from 'react';
-// import { motion, useScroll, useTransform } from 'framer-motion';
-// import { Link } from 'react-router-dom';
-// import type { LucideIcon } from 'lucide-react';
-// import {
-//   Code, Smartphone, Palette, Globe,
-//   ArrowRight, Sparkles
-// } from 'lucide-react';
-
-// const services: Array<{
-//   id: string;
-//   icon: LucideIcon;
-//   title: string;
-//   description: string;
-//   color: string;
-// }> = [
-//   { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies.', color: 'from-[#023e8a] to-rose-500' },
-//   { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications for all devices.', color: 'from-purple-500 to-violet-500' },
-//   { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality.', color: 'from-cyan-500 to-blue-500' },
-//   { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing to increase visibility and drive traffic.', color: 'from-emerald-500 to-teal-500' },
-// ];
-
-// const stats = [
-//   { value: '150+', label: 'Projects Delivered' },
-//   { value: '50+', label: 'Happy Clients' },
-//   { value: '8+', label: 'Years Experience' },
-//   { value: '24/7', label: 'Support' },
-// ];
-
-// // ✅ Animated Counter USED properly
-// const AnimatedCounter = ({ value }: { value: string }) => {
-//   const [display, setDisplay] = useState('0');
-//   const ref = useRef<HTMLSpanElement>(null);
-//   const [hasAnimated, setHasAnimated] = useState(false);
-
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       ([entry]) => {
-//         if (entry.isIntersecting && !hasAnimated) {
-//           setHasAnimated(true);
-//           const num = parseInt(value);
-//           if (isNaN(num)) {
-//             setDisplay(value);
-//             return;
-//           }
-//           const suffix = value.replace(/[0-9]/g, '');
-//           const duration = 2000;
-//           const startTime = Date.now();
-
-//           const animate = () => {
-//             const elapsed = Date.now() - startTime;
-//             const progress = Math.min(elapsed / duration, 1);
-//             const eased = 1 - Math.pow(1 - progress, 3);
-//             const current = Math.round(eased * num);
-//             setDisplay(current + suffix);
-//             if (progress < 1) requestAnimationFrame(animate);
-//           };
-
-//           requestAnimationFrame(animate);
-//         }
-//       },
-//       { threshold: 0.5 }
-//     );
-
-//     if (ref.current) observer.observe(ref.current);
-//     return () => observer.disconnect();
-//   }, [value, hasAnimated]);
-
-//   return <span ref={ref}>{display}</span>;
-// };
-
-// const Home = () => {
-//   const { scrollYProgress } = useScroll();
-//   const videoOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-
-//   return (
-//     <div className="relative">
-
-//       {/* 🎥 Background Video */}
-//       <motion.div
-//         className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden"
-//         style={{ opacity: videoOpacity }}
-//       >
-//         <div className="absolute inset-0 bg-black" />
-//         <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-//           <iframe
-//             src="https://www.youtube.com/embed/UolciECwp7Y?autoplay=1&mute=1&loop=1&playlist=UolciECwp7Y&controls=0"
-//             className="w-[150vw] h-[84.375vw] max-h-[150vh] max-w-[266.67vh]"
-//             allow="autoplay"
-//           />
-//         </div>
-//         <div className="absolute inset-0 bg-black/40" />
-//       </motion.div>
-
-//       <div className="relative z-10">
-
-//         {/* HERO */}
-//         <section className="h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
-
-//           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-//             <h2 className="text-white tracking-widest mb-2">
-//               The Sky Venture
-//             </h2>
-
-//             <h1 className="text-4xl md:text-6xl font-bold text-white">
-//               WE BUILD <span className="text-[#023e8a]">DIGITAL</span> FUTURE
-//             </h1>
-
-//             <p className="text-white/60 mt-4 max-w-md">
-//               Premium IT solutions that transform your business vision into reality.
-//             </p>
-//           </motion.div>
-
-//         </section>
-
-//         {/* 🔥 STATS SECTION (FIXED ERROR) */}
-//         <section className="py-20 bg-black text-white text-center">
-//           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-//             {stats.map((item, index) => (
-//               <div key={index}>
-//                 <h3 className="text-3xl font-bold">
-//                   <AnimatedCounter value={item.value} />
-//                 </h3>
-//                 <p className="text-white/60 text-sm mt-2">{item.label}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </section>
-
-//         {/* SERVICES */}
-//         <section className="py-20 px-6 md:px-16">
-//           <h2 className="text-3xl font-bold mb-10">Our Services</h2>
-
-//           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-//             {services.map((service) => (
-//               <Link key={service.id} to={`/services/${service.id}`}>
-//                 <div className="p-6 border rounded-lg hover:shadow-lg transition">
-//                   <service.icon className="w-6 h-6 mb-3" />
-//                   <h3 className="font-bold">{service.title}</h3>
-//                   <p className="text-sm text-gray-500 mt-2">
-//                     {service.description}
-//                   </p>
-//                 </div>
-//               </Link>
-//             ))}
-//           </div>
-//         </section>
-
-//         {/* CTA */}
-//         <section className="py-20 text-center bg-[#023e8a] text-white">
-//           <h2 className="text-3xl font-bold">
-//             Ready to Start Your Project?
-//           </h2>
-
-//           <Link to="/contact">
-//             <button className="mt-6 px-6 py-3 bg-white text-[#023e8a] font-bold">
-//               Contact Us
-//             </button>
-//           </Link>
-//         </section>
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { LucideIcon } from 'lucide-react';
 import {
-  Code, Smartphone, Palette, Globe
+  Code, Smartphone, Palette, Globe, ArrowRight, Brain
 } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { motion } from 'framer-motion';
 
 const services: Array<{
   id: string;
   icon: LucideIcon;
   title: string;
   description: string;
-  color: string;
 }> = [
-  { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies.', color: 'from-[#023e8a] to-rose-500' },
-  { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications for all devices.', color: 'from-purple-500 to-violet-500' },
-  { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality.', color: 'from-cyan-500 to-blue-500' },
-  { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing to increase visibility and drive traffic.', color: 'from-emerald-500 to-teal-500' },
+  { id: 'ai-training', icon: Brain, title: 'AI Training & Development', description: 'Industry-leading AI training program with professional certification, internship opportunities, and real-world project experience.' },
+  { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies for optimal performance.' },
+  { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications that deliver seamless experiences across all devices.' },
+  { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality to create engaging digital experiences.' },
+  { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing solutions that increase visibility, drive traffic, and convert visitors into customers.' },
 ];
 
 const stats = [
   { value: '150+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Happy Clients' },
+  { value: '50+', label: 'Enterprise Clients' },
   { value: '8+', label: 'Years Experience' },
-  { value: '24/7', label: 'Support' },
+  { value: '24/7', label: 'Premium Support' },
 ];
 
 const AnimatedCounter = ({ value }: { value: string }) => {
@@ -540,95 +72,190 @@ const AnimatedCounter = ({ value }: { value: string }) => {
   return <span ref={ref}>{display}</span>;
 };
 
-const Home = () => {
-  const { scrollYProgress } = useScroll();
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+const FadeInUpSection = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number, className?: string }) => {
+  const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <div className="relative">
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+        transition: `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
-      {/* Background Video */}
-      <motion.div
-        className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden"
-        style={{ opacity: videoOpacity }}
-      >
-        <div className="absolute inset-0 bg-black" />
-        <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <iframe
-            src="https://www.youtube.com/embed/UolciECwp7Y?autoplay=1&mute=1&loop=1&playlist=UolciECwp7Y&controls=0"
-            className="w-[150vw] h-[84.375vw] max-h-[150vh] max-w-[266.67vh]"
-            allow="autoplay"
-          />
+const Home = () => {
+  return (
+    <div className="relative bg-[#ffffff] text-[#4a4a4a] selection:bg-[#023e8a] selection:text-white">
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative h-screen w-full flex items-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 overflow-hidden border-b border-gray-200">
+        {/* Underlay: The YouTube Video */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[84.375vw] max-h-[150vh] max-w-[266.67vh]">
+            <iframe
+              src="https://www.youtube.com/embed/UolciECwp7Y?autoplay=1&mute=1&loop=1&playlist=UolciECwp7Y&controls=0"
+              className="w-full h-full" 
+              allow="autoplay"
+            />
+          </div>
         </div>
-        <div className="absolute inset-0 bg-black/40" />
-      </motion.div>
 
-      <div className="relative z-10">
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto">
+          <div className="overflow-hidden">
+            <motion.p 
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xs sm:text-sm font-bold tracking-[0.3em] uppercase mb-8 text-[#023e8a]"
+            >
+              D Sky Ventures Pvt Ltd
+            </motion.p>
+          </div>
+          
+          <div className="mb-10">
+               <div className="overflow-hidden p-2 -m-2">
+                 <motion.h1 
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400 leading-[0.9] tracking-tighter"
+                  >
+                    DIGITAL
+                  </motion.h1>
+               </div>
+               <div className="overflow-hidden p-2 -m-2">
+                 <motion.h1 
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400 leading-[0.9] tracking-tighter"
+                  >
+                    FUTURE.
+                  </motion.h1>
+               </div>
+          </div>
 
-        {/* HERO */}
-        <section className="h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <h2 className="text-white tracking-widest mb-2">
-              The Sky Venture
-            </h2>
-
-            <h1 className="text-4xl md:text-6xl font-bold text-white">
-              WE BUILD <span className="text-[#023e8a]">DIGITAL</span> FUTURE
-            </h1>
-
-            <p className="text-white/60 mt-4 max-w-md">
-              Premium IT solutions that transform your business vision into reality.
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-10"
+          >
+            <p className="max-w-2xl text-lg md:text-xl text-white font-light leading-relaxed">
+              We engineer enterprise-grade technical solutions and immersive digital experiences that elevate your brand to the next standard of excellence.
             </p>
-          </motion.div>
-        </section>
-
-        {/* STATS */}
-        <section className="py-20 bg-black text-white text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((item, index) => (
-              <div key={index}>
-                <h3 className="text-3xl font-bold">
-                  <AnimatedCounter value={item.value} />
-                </h3>
-                <p className="text-white/60 text-sm mt-2">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* SERVICES */}
-        <section className="py-20 px-6 md:px-16">
-          <h2 className="text-3xl font-bold mb-10">Our Services</h2>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <Link key={service.id} to={`/services/${service.id}`}>
-                <div className="p-6 border rounded-lg hover:shadow-lg transition">
-                  <service.icon className="w-6 h-6 mb-3" />
-                  <h3 className="font-bold">{service.title}</h3>
-                  <p className="text-sm text-gray-500 mt-2">
-                    {service.description}
-                  </p>
-                </div>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <Link to="/services">
+                <button className="px-8 py-4 bg-[#023e8a] text-white font-medium hover:bg-[#012a60] border border-[#023e8a] transition-colors duration-300 w-full sm:w-auto uppercase text-xs tracking-[0.2em]">
+                  Our Services
+                </button>
               </Link>
-            ))}
+              <Link to="/contact">
+                <button className="px-8 py-4 bg-white text-[#023e8a] font-medium border border-[#023e8a] hover:bg-[#023e8a] hover:text-white transition-colors duration-300 w-full sm:w-auto uppercase text-xs tracking-[0.2em] group flex items-center justify-center gap-3">
+                  Start Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+
+
+      {/* --- BENTO GRID SERVICES --- */}
+      <section className="py-24 md:py-32 px-4 sm:px-8 md:px-16 lg:px-24 max-w-[1600px] mx-auto">
+        <FadeInUpSection>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none text-[#023e8a]">
+              OUR EXPERTISE
+            </h2>
+            <p className="text-lg text-[#6b7280] max-w-md font-light leading-relaxed">
+              We specialize in creating powerful digital ecosystems that drive engagement and business growth.
+            </p>
           </div>
-        </section>
+        </FadeInUpSection>
 
-        {/* CTA */}
-        <section className="py-20 text-center bg-[#023e8a] text-white">
-          <h2 className="text-3xl font-bold">
-            Ready to Start Your Project?
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Large Featured Service - Span 2 */}
+          <FadeInUpSection delay={0.1} className="md:col-span-2 h-[400px] md:h-[450px]">
+            <Link to={`/services/${services[0].id}`} className="block h-full group relative overflow-hidden bg-[#fefcfa] border border-[#ddd2c4] p-8 md:p-12 flex flex-col justify-end transition-all hover:border-[#023e8a] hover:shadow-2xl hover:shadow-[#023e8a]/5 hover:-translate-y-1">
+              <div className="absolute top-8 right-8 w-14 h-14 rounded-full border border-[#ddd2c4] flex items-center justify-center group-hover:bg-[#023e8a] group-hover:border-[#023e8a] group-hover:text-white transition-all duration-500 text-[#023e8a]">
+                <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+              </div>
+              {(() => { const Icon = services[0].icon; return <Icon className="w-12 h-12 mb-8 text-[#023e8a]" strokeWidth={1.5} />; })()}
+              <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-[#4a4a4a]">{services[0].title}</h3>
+              <p className="text-[#6b7280] max-w-md text-lg leading-relaxed">{services[0].description}</p>
+            </Link>
+          </FadeInUpSection>
+
+          {/* Regular Service (Inverted color style) */}
+          <FadeInUpSection delay={0.2} className="h-[400px] md:h-[450px]">
+            <Link to={`/services/${services[1].id}`} className="block h-full group relative overflow-hidden bg-[#023e8a] text-white border border-[#023e8a] p-8 md:p-12 flex flex-col justify-end transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#023e8a]/20">
+              <div className="absolute top-8 right-8 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white transition-colors duration-500">
+                <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+              </div>
+              {(() => { const Icon = services[1].icon; return <Icon className="w-12 h-12 mb-8 text-white/90" strokeWidth={1} />; })()}
+              <h3 className="text-3xl font-bold mb-4 tracking-tight">{services[1].title}</h3>
+              <p className="text-white/80 leading-relaxed text-lg">{services[1].description}</p>
+            </Link>
+          </FadeInUpSection>
+
+          {/* Remaining Services mapped */}
+          {services.slice(2).map((service, index) => (
+             <FadeInUpSection key={service.id} delay={0.3 + (index * 0.1)} className="h-[350px]">
+                <Link to={`/services/${service.id}`} className="block h-full group relative overflow-hidden bg-white border border-[#ddd2c4] p-8 flex flex-col justify-end transition-all hover:border-[#023e8a] hover:bg-[#fefcfa] hover:-translate-y-1">
+                  <div className="absolute top-8 right-8 w-10 h-10 rounded-full flex items-center justify-center -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                    <ArrowRight className="w-5 h-5 text-[#023e8a]" />
+                  </div>
+                  {(() => { const Icon = service.icon; return <Icon className="w-10 h-10 mb-6 text-[#023e8a]" strokeWidth={1.5} />; })()}
+                  <h3 className="text-2xl font-bold mb-3 tracking-tight text-[#4a4a4a]">{service.title}</h3>
+                  <p className="text-[#6b7280] text-sm md:text-base leading-relaxed hidden sm:block">{service.description}</p>
+                </Link>
+             </FadeInUpSection>
+          ))}
+        </div>
+      </section>
+
+      {/* --- MINIMALIST STATS --- */}
+      <section className="py-32 border-y border-gray-200 bg-white">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-16 lg:px-24 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-0 divide-x-0 md:divide-x divide-[#ddd2c4]">
+          {stats.map((item, index) => (
+            <FadeInUpSection key={index} delay={index * 0.1} className="md:px-12 text-center md:text-left flex flex-col justify-center">
+              <h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#023e8a] mb-4">
+                <AnimatedCounter value={item.value} />
+              </h3>
+              <p className="text-[#6b7280] uppercase tracking-[0.2em] text-xs font-bold">{item.label}</p>
+            </FadeInUpSection>
+          ))}
+        </div>
+      </section>
+
+      {/* --- FINAL CTA --- */}
+      <section className="py-40 px-4 md:px-8 text-center bg-[#f8f3ec]">
+        <FadeInUpSection>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-10 max-w-4xl mx-auto leading-tight text-[#023e8a]">
+            READY TO BUILD <br/><span className="text-[#023e8a]/30">SOMETHING EXTRAORDINARY?</span>
           </h2>
+        </FadeInUpSection>
 
+        <FadeInUpSection delay={0.2}>
           <Link to="/contact">
-            <button className="mt-6 px-6 py-3 bg-white text-[#023e8a] font-bold">
-              Contact Us
+            <button className="px-12 py-6 bg-[#023e8a] text-white font-bold hover:bg-[#012a60] transition-colors uppercase tracking-[0.2em] text-xs shadow-2xl shadow-[#023e8a]/20">
+              Start Your Project
             </button>
           </Link>
-        </section>
+        </FadeInUpSection>
+      </section>
 
-      </div>
     </div>
   );
 };

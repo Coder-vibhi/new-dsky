@@ -178,16 +178,8 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  display: none;
 }
-
-::-webkit-scrollbar-track {
-  background: #f2ece4;
-}
-
-  ::-webkit-scrollbar-thumb {
-    background: #c47b8a;
-  }
 
 /* Selection */
   ::selection {
