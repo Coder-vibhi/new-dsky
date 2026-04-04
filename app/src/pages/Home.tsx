@@ -5,7 +5,7 @@ import {
   Code, Smartphone, Palette, Globe, ArrowRight, Brain
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const services: Array<{
   id: string;
@@ -13,12 +13,12 @@ const services: Array<{
   title: string;
   description: string;
 }> = [
-  { id: 'ai-training', icon: Brain, title: 'AI Training & Development', description: 'Industry-leading AI training program with professional certification, internship opportunities, and real-world project experience.' },
-  { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies for optimal performance.' },
-  { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications that deliver seamless experiences across all devices.' },
-  { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality to create engaging digital experiences.' },
-  { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing solutions that increase visibility, drive traffic, and convert visitors into customers.' },
-];
+    { id: 'ai-training', icon: Brain, title: 'AI Training & Development', description: 'Industry-leading AI training program with professional certification, internship opportunities, and real-world project experience.' },
+    { id: 'web-development', icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with modern technologies for optimal performance.' },
+    { id: 'app-development', icon: Smartphone, title: 'App Development', description: 'Native and cross-platform mobile applications that deliver seamless experiences across all devices.' },
+    { id: 'ui-ux-design', icon: Palette, title: 'UI/UX Design', description: 'User-centered design that combines aesthetics with functionality to create engaging digital experiences.' },
+    { id: 'digital-marketing', icon: Globe, title: 'Digital Marketing', description: 'Strategic marketing solutions that increase visibility, drive traffic, and convert visitors into customers.' },
+  ];
 
 const stats = [
   { value: '150+', label: 'Projects Delivered' },
@@ -91,81 +91,109 @@ const FadeInUpSection = ({ children, delay = 0, className = "" }: { children: Re
 };
 
 const Home = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const videoY = useTransform(heroScroll, [0, 1], ["0%", "25%"]);
+  const textY = useTransform(heroScroll, [0, 1], ["0%", "40%"]);
+  const textOpacity = useTransform(heroScroll, [0, 0.8], [1, 0]);
+
+  const bentoRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: bentoScroll } = useScroll({
+    target: bentoRef,
+    offset: ["start end", "end start"]
+  });
+  const bentoY1 = useTransform(bentoScroll, [0, 1], [0, 0]); // Base
+  const bentoY2 = useTransform(bentoScroll, [0, 1], [40, -40]); // Faster
+  const bentoY3 = useTransform(bentoScroll, [0, 1], [20, -20]); // Medium
+  const bentoY4 = useTransform(bentoScroll, [0, 1], [60, -60]); // Fastest
+
   return (
     <div className="relative bg-[#ffffff] text-[#4a4a4a] selection:bg-[#023e8a] selection:text-white">
 
       {/* --- HERO SECTION --- */}
-      <section className="relative h-screen w-full flex items-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 overflow-hidden border-b border-gray-200">
-        {/* Underlay: The YouTube Video */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[84.375vw] max-h-[150vh] max-w-[266.67vh]">
-            <iframe
-              src="https://www.youtube.com/embed/UolciECwp7Y?autoplay=1&mute=1&loop=1&playlist=UolciECwp7Y&controls=0"
-              className="w-full h-full" 
-              allow="autoplay"
-            />
-          </div>
-        </div>
+      <section ref={heroRef} className="relative h-[100vh] min-h-[800px] w-full flex items-center overflow-hidden bg-black border-b border-[#111]">
+        {/* Underlay: The Background Image */}
+        <motion.div style={{ y: videoY }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <img
+            src="/images/logohome.png"
+            alt="Hero Background"
+            className="w-full h-full object-contain object-right lg:object-center"
+          />
+        </motion.div>
+
+        {/* Dark Gradient Overlay restricted to left side */}
+        <div className="absolute top-0 left-0 w-full lg:w-[60%] h-full z-[5] bg-gradient-to-r from-[#050b14]/90 via-[#050b14]/60 to-transparent pointer-events-none"></div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto">
-          <div className="overflow-hidden">
-            <motion.p 
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xs sm:text-sm font-bold tracking-[0.3em] uppercase mb-8 text-[#023e8a]"
-            >
-              D Sky Ventures Pvt Ltd
-            </motion.p>
-          </div>
-          
-          <div className="mb-10">
-               <div className="overflow-hidden p-2 -m-2">
-                 <motion.h1 
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.4, ease: [0.25, 1, 0.5, 1] }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400 leading-[0.9] tracking-tighter"
-                  >
-                    DIGITAL
-                  </motion.h1>
-               </div>
-               <div className="overflow-hidden p-2 -m-2">
-                 <motion.h1 
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.5, ease: [0.25, 1, 0.5, 1] }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400 leading-[0.9] tracking-tighter"
-                  >
-                    FUTURE.
-                  </motion.h1>
-               </div>
-          </div>
+        <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-10">
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-10"
-          >
-            <p className="max-w-2xl text-lg md:text-xl text-white font-light leading-relaxed">
+          {/* Left Text Content */}
+          <div className="flex-1 max-w-2xl pt-20 lg:pt-0">
+            <div className="overflow-hidden mb-6">
+              <motion.p
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xs sm:text-sm font-bold tracking-[0.3em] uppercase text-cyan-400"
+              >
+                D Sky Ventures Pvt Ltd
+              </motion.p>
+            </div>
+
+            <div className="overflow-hidden mb-2">
+              <motion.h1
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-white leading-[1.1]"
+              >
+                Digital
+              </motion.h1>
+            </div>
+
+            <div className="overflow-hidden mb-8">
+              <motion.h1
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600 leading-[1.1] tracking-tighter"
+              >
+                Future.
+              </motion.h1>
+            </div>
+
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="max-w-md text-lg text-white/70 font-light leading-relaxed mb-10"
+            >
               We engineer enterprise-grade technical solutions and immersive digital experiences that elevate your brand to the next standard of excellence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            </motion.p>
+
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
               <Link to="/services">
-                <button className="px-8 py-4 bg-[#023e8a] text-white font-medium hover:bg-[#012a60] border border-[#023e8a] transition-colors duration-300 w-full sm:w-auto uppercase text-xs tracking-[0.2em]">
+                <button className="px-8 py-4 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors duration-300 w-full sm:w-auto uppercase text-xs tracking-[0.2em] rounded-sm">
                   Our Services
                 </button>
               </Link>
               <Link to="/contact">
-                <button className="px-8 py-4 bg-white text-[#023e8a] font-medium border border-[#023e8a] hover:bg-[#023e8a] hover:text-white transition-colors duration-300 w-full sm:w-auto uppercase text-xs tracking-[0.2em] group flex items-center justify-center gap-3">
+                <button className="px-8 py-4 bg-transparent text-white border border-white/30 hover:border-white hover:bg-white/5 transition-colors duration-300 w-full sm:w-auto uppercase text-xs tracking-[0.2em] group flex items-center justify-center gap-3 rounded-sm">
                   Start Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
+
+        </motion.div>
       </section>
 
 
@@ -184,34 +212,39 @@ const Home = () => {
         </FadeInUpSection>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div ref={bentoRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Large Featured Service - Span 2 */}
-          <FadeInUpSection delay={0.1} className="md:col-span-2 h-[400px] md:h-[450px]">
-            <Link to={`/services/${services[0].id}`} className="block h-full group relative overflow-hidden bg-[#fefcfa] border border-[#ddd2c4] p-8 md:p-12 flex flex-col justify-end transition-all hover:border-[#023e8a] hover:shadow-2xl hover:shadow-[#023e8a]/5 hover:-translate-y-1">
-              <div className="absolute top-8 right-8 w-14 h-14 rounded-full border border-[#ddd2c4] flex items-center justify-center group-hover:bg-[#023e8a] group-hover:border-[#023e8a] group-hover:text-white transition-all duration-500 text-[#023e8a]">
-                <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-              </div>
-              {(() => { const Icon = services[0].icon; return <Icon className="w-12 h-12 mb-8 text-[#023e8a]" strokeWidth={1.5} />; })()}
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-[#4a4a4a]">{services[0].title}</h3>
-              <p className="text-[#6b7280] max-w-md text-lg leading-relaxed">{services[0].description}</p>
-            </Link>
-          </FadeInUpSection>
+          <motion.div style={{ y: bentoY1 }} className="md:col-span-2 h-[400px] md:h-[450px]">
+            <FadeInUpSection delay={0.1} className="h-full">
+              <Link to={`/services/${services[0].id}`} className="block h-full group relative overflow-hidden bg-[#fefcfa] border border-[#ddd2c4] p-8 md:p-12 flex flex-col justify-end transition-all hover:border-[#023e8a] hover:shadow-2xl hover:shadow-[#023e8a]/5 hover:-translate-y-1">
+                <div className="absolute top-8 right-8 w-14 h-14 rounded-full border border-[#ddd2c4] flex items-center justify-center group-hover:bg-[#023e8a] group-hover:border-[#023e8a] group-hover:text-white transition-all duration-500 text-[#023e8a]">
+                  <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                </div>
+                {(() => { const Icon = services[0].icon; return <Icon className="w-12 h-12 mb-8 text-[#023e8a]" strokeWidth={1.5} />; })()}
+                <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-[#4a4a4a]">{services[0].title}</h3>
+                <p className="text-[#6b7280] max-w-md text-lg leading-relaxed">{services[0].description}</p>
+              </Link>
+            </FadeInUpSection>
+          </motion.div>
 
           {/* Regular Service (Inverted color style) */}
-          <FadeInUpSection delay={0.2} className="h-[400px] md:h-[450px]">
-            <Link to={`/services/${services[1].id}`} className="block h-full group relative overflow-hidden bg-[#023e8a] text-white border border-[#023e8a] p-8 md:p-12 flex flex-col justify-end transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#023e8a]/20">
-              <div className="absolute top-8 right-8 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white transition-colors duration-500">
-                <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-              </div>
-              {(() => { const Icon = services[1].icon; return <Icon className="w-12 h-12 mb-8 text-white/90" strokeWidth={1} />; })()}
-              <h3 className="text-3xl font-bold mb-4 tracking-tight">{services[1].title}</h3>
-              <p className="text-white/80 leading-relaxed text-lg">{services[1].description}</p>
-            </Link>
-          </FadeInUpSection>
+          <motion.div style={{ y: bentoY2 }} className="h-[400px] md:h-[450px]">
+            <FadeInUpSection delay={0.2} className="h-full">
+              <Link to={`/services/${services[1].id}`} className="block h-full group relative overflow-hidden bg-[#023e8a] text-white border border-[#023e8a] p-8 md:p-12 flex flex-col justify-end transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#023e8a]/20">
+                <div className="absolute top-8 right-8 w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white transition-colors duration-500">
+                  <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                </div>
+                {(() => { const Icon = services[1].icon; return <Icon className="w-12 h-12 mb-8 text-white/90" strokeWidth={1} />; })()}
+                <h3 className="text-3xl font-bold mb-4 tracking-tight">{services[1].title}</h3>
+                <p className="text-white/80 leading-relaxed text-lg">{services[1].description}</p>
+              </Link>
+            </FadeInUpSection>
+          </motion.div>
 
           {/* Remaining Services mapped */}
           {services.slice(2).map((service, index) => (
-             <FadeInUpSection key={service.id} delay={0.3 + (index * 0.1)} className="h-[350px]">
+            <motion.div key={service.id} style={{ y: [bentoY3, bentoY4, bentoY1][index % 3] }} className="h-[350px]">
+              <FadeInUpSection delay={0.3 + (index * 0.1)} className="h-full">
                 <Link to={`/services/${service.id}`} className="block h-full group relative overflow-hidden bg-white border border-[#ddd2c4] p-8 flex flex-col justify-end transition-all hover:border-[#023e8a] hover:bg-[#fefcfa] hover:-translate-y-1">
                   <div className="absolute top-8 right-8 w-10 h-10 rounded-full flex items-center justify-center -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
                     <ArrowRight className="w-5 h-5 text-[#023e8a]" />
@@ -220,7 +253,8 @@ const Home = () => {
                   <h3 className="text-2xl font-bold mb-3 tracking-tight text-[#4a4a4a]">{service.title}</h3>
                   <p className="text-[#6b7280] text-sm md:text-base leading-relaxed hidden sm:block">{service.description}</p>
                 </Link>
-             </FadeInUpSection>
+              </FadeInUpSection>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -243,7 +277,7 @@ const Home = () => {
       <section className="py-40 px-4 md:px-8 text-center bg-[#f8f3ec]">
         <FadeInUpSection>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-10 max-w-4xl mx-auto leading-tight text-[#023e8a]">
-            READY TO BUILD <br/><span className="text-[#023e8a]/30">SOMETHING EXTRAORDINARY?</span>
+            READY TO BUILD <br /><span className="text-[#023e8a]/30">SOMETHING EXTRAORDINARY?</span>
           </h2>
         </FadeInUpSection>
 
