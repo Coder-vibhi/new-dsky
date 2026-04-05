@@ -1,29 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'HOME', href: '/' },
+  { label: 'SERVICES', href: '/services' },
+  { label: 'PORTFOLIO', href: '/portfolio' },
+  { label: 'TESTIMONIALS', href: '/testimonials' },
 ];
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -31,130 +20,107 @@ const Navigation = () => {
 
   return (
     <>
-      <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-white/70 backdrop-blur-xl border-b border-[#ddd2c4]' 
-            : 'bg-transparent'
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="w-full px-6 md:px-12 lg:px-20">
-          <div className="flex items-center justify-between h-20">
+      <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
+        <div className="w-full flex items-center h-24">
+          
+          {/* Left Side (White area) - roughly 50% */}
+          <div className="flex-1 flex items-center justify-between pl-8 pr-4 lg:pl-16 lg:pr-12 h-full">
             {/* Logo */}
-            <Link to="/" className="relative group">
-              <motion.div 
-                className="text-2xl font-display font-black text-[#1a1a1a] tracking-tighter"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                The Sky <span className="text-[#023e8a] group-hover:animate-pulse">Venture</span>
-              </motion.div>
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-gray-900 overflow-hidden">
+                <span className="text-xl font-black text-gray-900 tracking-tighter leading-none">D</span>
+                <span className="text-orange-500 text-lg font-black leading-none -ml-0.5">△</span>
+              </div>
+              <div className="flex flex-col leading-[1.1] ml-1">
+                <span className="text-[12px] font-black text-gray-900 uppercase tracking-widest whitespace-nowrap">D Sky</span>
+                <span className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.2em] whitespace-nowrap">Ventures</span>
+              </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link, index) => (
+            {/* Desktop Navigation links */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
+              {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="relative group"
+                  className={`text-[11px] font-extrabold uppercase tracking-widest transition-colors ${
+                    location.pathname === link.href || (link.href === '/' && location.pathname === '')
+                      ? 'text-gray-900'
+                      : 'text-gray-500 hover:text-red-500'
+                  }`}
                 >
-                  <motion.span
-                    className={`text-sm font-body font-medium tracking-wide transition-colors ${
-                      location.pathname === link.href 
-                        ? 'text-[#023e8a]' 
-                        : 'text-[#6b7280] hover:text-[#4a4a4a]'
-                    }`}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.5 }}
-                  >
-                    {link.label}
-                  </motion.span>
-                  
-                  {/* Hover underline */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#023e8a] transition-all duration-300 group-hover:w-full" />
-                  
-                  {/* Active indicator */}
-                  {location.pathname === link.href && (
-                    <motion.span 
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#023e8a]"
-                      layoutId="activeNav"
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
+                  {link.label}
                 </Link>
               ))}
             </nav>
+          </div>
 
-            {/* CTA Button */}
-            <Link to="/contact" className="hidden md:block">
-              <motion.button
-                className="px-5 py-2 border border-[#023e8a] text-[#023e8a] font-display font-medium text-sm tracking-wide hover:bg-[#023e8a] hover:text-white transition-all"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact
-              </motion.button>
-            </Link>
+          {/* Right Side (Red area) - roughly 50% */}
+          <div className="flex-1 flex items-center justify-end pr-8 lg:pr-16 h-full">
+            <div className="hidden lg:flex items-center gap-6">
+              <span className="text-white font-bold tracking-widest text-sm whitespace-nowrap">
+                +1 - 800 - 123 - 4567
+              </span>
+              <Link to="/contact">
+                <button className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                  <Mail className="w-4 h-4" />
+                </button>
+              </Link>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-[#4a4a4a] p-2"
+              className="lg:hidden text-white p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <Menu size={28} />
             </button>
           </div>
+
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 md:hidden"
-            style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[60] bg-white lg:hidden pt-24"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 50 }}
-                  transition={{ delay: index * 0.1 }}
-                >
+            <button
+              className="absolute top-8 right-8 text-gray-900"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <X size={32} />
+            </button>
+            <div className="flex flex-col items-center justify-start h-full gap-8 px-6">
+              {navLinks.map((link) => (
+                <div key={link.href}>
                   <Link
                     to={link.href}
-                    className={`text-3xl font-display font-bold ${
-                      location.pathname === link.href ? 'text-[#023e8a]' : 'text-[#4a4a4a]'
+                    className={`text-2xl font-black tracking-widest uppercase ${
+                      location.pathname === link.href || (link.href === '/' && location.pathname === '')
+                        ? 'text-red-600' : 'text-gray-900'
                     }`}
                   >
                     {link.label}
                   </Link>
-                </motion.div>
+                </div>
               ))}
               
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ delay: 0.5 }}
-              >
+              <div className="mt-8 flex flex-col items-center gap-4">
+                <span className="text-gray-900 font-bold tracking-widest text-lg">
+                  +1 - 800 - 123 - 4567
+                </span>
                 <Link to="/contact">
-                  <button className="mt-8 px-6 py-3 border border-[#023e8a] text-[#023e8a] font-display">
+                  <button className="px-10 py-3 bg-gray-900 text-white font-bold tracking-widest uppercase">
                     Contact Us
                   </button>
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}

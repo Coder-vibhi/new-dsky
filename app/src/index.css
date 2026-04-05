@@ -10,31 +10,13 @@
     --foreground: 20 20% 12%;
     --card: 30 20% 99%;
     --card-foreground: 20 20% 12%;
-    --popover: 30 20% 99%;
-    --popover-foreground: 20 20% 12%;
-    --primary: 345 30% 60%;
+    --primary: #6b46c1;
     --primary-foreground: 0 0% 100%;
-    --secondary: 30 25% 94%;
-    --secondary-foreground: 20 20% 12%;
-    --muted: 30 18% 92%;
-    --muted-foreground: 25 10% 45%;
-    --accent: 345 30% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
     --border: 30 18% 85%;
-    --input: 30 18% 85%;
-    --ring: 345 30% 60%;
-    --radius: 0rem;
     
-    --pink: #023e8a;
-    --cream: #f8f3ec;
-    --warm-linen: #f2ece4;
-    --soft-blush: #faf5f7;
-    --taupe: #ebe3d8;
-    --dark-text: #4a4a4a;
-    --muted-text: #6b7280;
-    --warm-border: #ddd2c4;
+    --purple: #6b46c1;
+    --dark-text: #1e293b;
+    --muted-text: #64748b;
   }
 }
 
@@ -48,7 +30,7 @@
   }
   
   body {
-    background: linear-gradient(160deg, #f8f3ec 0%, #f2ece4 40%, #faf5f7 100%);
+    background: #fcfdff;
     color: var(--dark-text);
     @apply antialiased;
     font-family: 'Open Sans', sans-serif;

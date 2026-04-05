@@ -16,6 +16,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import Testimonials from './pages/Testimonials';
 import ServiceDetail from './pages/ServiceDetail';
 import ProjectDetail from './pages/ProjectDetail';
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="/services/:serviceId" element={<><ServiceDetail /><Footer /></>} />
             <Route path="/portfolio" element={<><Portfolio /><Footer /></>} />
             <Route path="/portfolio/:projectId" element={<><ProjectDetail /><Footer /></>} />
+            <Route path="/testimonials" element={<><Testimonials /><Footer /></>} />
             <Route path="/contact" element={<><Contact /><Footer /></>} />
           </Routes>
         </PageTransition>
