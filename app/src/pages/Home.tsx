@@ -22,12 +22,12 @@ const teamImages = [
 ];
 
 const industries = [
-  { name: 'Manufacturing', image: '/images/industries/manufacturing.png', color: '#dcfce7' },
-  { name: 'Retail & Consumer', image: '/images/industries/retail.png', color: '#fef9c3' },
-  { name: 'Telecom', image: '/images/industries/telecom.png', color: '#e0f2fe' },
-  { name: 'Education', image: '/images/industries/education.png', color: '#f3e8ff' },
-  { name: 'Technology', image: '/images/industries/technology.png', color: '#ffedd5' },
-  { name: 'Healthcare', image: '/images/industries/healthcare.png', color: '#ede9fe' }
+  { name: 'Artificial intelligence', image: '/service images/ai.png', color: '#dcfce7' },
+  { name: 'Web development', image: '/images/industries/webdev.png', color: '#fef9c3' },
+  { name: 'UI/UX design', image: '/images/industries/uiux (2).png', color: '#e0f2fe' },
+  { name: 'Digital marketing', image: '/images/industries/digital (2).png', color: '#f3e8ff' },
+  { name: 'IT staffing', image: '/images/industries/staffing (2).png', color: '#ffedd5' },
+  { name: 'Financial services', image: '/images/industries/shield.png', color: '#ede9fe' }
 ];
 
 const homeTestimonials = [
