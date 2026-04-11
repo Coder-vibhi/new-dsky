@@ -24,8 +24,8 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
   if (service.featured) {
     return (
       <Link to={`/services/${service.id}`}>
-        <div className="group relative cursor-pointer overflow-hidden border-2 border-[#023e8a]/30 hover:border-[#023e8a]/60 transition-colors duration-300">
-          <div className="relative p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center" style={{ background: '#fefcfa' }}>
+        <div className="group relative cursor-pointer overflow-hidden border-2 border-[#e11d48]/30 hover:border-[#e11d48]/60 transition-colors duration-300">
+          <div className="relative p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center" style={{ background: '#ffffff' }}>
             {/* Left Content */}
             <div className="flex-1">
               <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-6`}>
@@ -33,10 +33,10 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
               </div>
               
               {service.subtitle && (
-                <p className="text-[#023e8a] text-xs font-body tracking-[0.2em] uppercase mb-2">{service.subtitle}</p>
+                <p className="text-[#e11d48] text-xs font-body tracking-[0.2em] uppercase mb-2">{service.subtitle}</p>
               )}
 
-              <h3 className="text-2xl md:text-3xl font-display font-black text-[#4a4a4a] mb-4 group-hover:text-[#023e8a] transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-display font-black text-[#4a4a4a] mb-4 group-hover:text-[#e11d48] transition-colors duration-300">
                 {service.title}
               </h3>
               <p className="text-[#6b7280] font-body leading-relaxed mb-8 max-w-xl">
@@ -47,13 +47,13 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
               <div className="flex flex-wrap gap-4 mb-6">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm text-[#6b7280]">
-                    <Check className="w-4 h-4 text-[#023e8a]" />
+                    <Check className="w-4 h-4 text-[#e11d48]" />
                     {feature}
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center gap-2 text-[#023e8a] font-body font-semibold">
+              <div className="flex items-center gap-2 text-[#e11d48] font-body font-semibold">
                 <span>Explore Program</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -61,8 +61,8 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
 
             {/* Right Visual */}
             <div className="hidden md:flex items-center justify-center">
-              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#023e8a]/15 to-purple-500/15 flex items-center justify-center">
-                <service.icon className="w-20 h-20 text-[#023e8a]/50" />
+              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#e11d48]/15 to-rose-500/15 flex items-center justify-center">
+                <service.icon className="w-20 h-20 text-[#e11d48]/50" />
               </div>
             </div>
           </div>
@@ -73,15 +73,15 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
 
   return (
     <Link to={`/services/${service.id}`}>
-      <div className="group relative h-full cursor-pointer overflow-hidden border border-[#ddd2c4]">
-        <div className="relative p-8 h-full flex flex-col" style={{ background: '#fefcfa' }}>
+      <div className="group relative h-full cursor-pointer overflow-hidden border border-gray-100">
+        <div className="relative p-8 h-full flex flex-col" style={{ background: '#ffffff' }}>
           {/* Icon */}
           <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-6`}>
             <service.icon className="w-5 h-5 text-white" />
           </div>
 
           {/* Content */}
-              <h3 className="text-xl font-display font-bold text-[#4a4a4a] mb-3 group-hover:text-[#023e8a] transition-colors duration-300">
+              <h3 className="text-xl font-display font-bold text-[#4a4a4a] mb-3 group-hover:text-[#e11d48] transition-colors duration-300">
             {service.title}
           </h3>
           <p className="text-[#6b7280] font-body text-sm mb-6 flex-grow">
@@ -92,14 +92,14 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
           <ul className="space-y-2 mb-6">
             {service.features.map((feature, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-[#6b7280]">
-                <Check className="w-3.5 h-3.5 text-[#023e8a] flex-shrink-0" />
+                <Check className="w-3.5 h-3.5 text-[#e11d48] flex-shrink-0" />
                 {feature}
               </li>
             ))}
           </ul>
 
           {/* CTA */}
-          <div className="flex items-center gap-2 text-[#023e8a]/60 group-hover:text-[#023e8a] transition-all duration-300">
+          <div className="flex items-center gap-2 text-[#e11d48]/60 group-hover:text-[#e11d48] transition-all duration-300">
             <span className="text-xs font-body font-medium">Explore</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </div>
@@ -118,7 +118,7 @@ const Services = () => {
       subtitle: 'Transform Your Career',
       description: 'Industry-leading AI training program with professional certification, internship opportunities, and real-world project experience.',
       features: ['Professional Certificate', 'Internship Opportunity', 'Placement Assistance', 'Letter of Recommendation'],
-      color: 'from-[#023e8a] to-purple-600',
+      color: 'from-rose-500 to-rose-700',
       featured: true
     },
     {
@@ -127,7 +127,7 @@ const Services = () => {
       title: 'Web Development',
       description: 'Custom websites and web applications built with modern technologies for optimal performance.',
       features: ['React & Next.js', 'Node.js Backend', 'E-commerce Solutions', 'CMS Integration'],
-      color: 'from-[#023e8a] to-rose-500'
+      color: 'from-rose-600 to-red-600'
     },
     {
       id: 'app-development',
@@ -135,7 +135,7 @@ const Services = () => {
       title: 'App Development',
       description: 'Native and cross-platform mobile applications that deliver seamless experiences across all devices.',
       features: ['iOS & Android', 'React Native', 'Flutter', 'App Store Optimization'],
-      color: 'from-purple-500 to-violet-500'
+      color: 'from-red-500 to-rose-500'
     },
     {
       id: 'ui-ux-design',
@@ -143,7 +143,7 @@ const Services = () => {
       title: 'UI/UX Design',
       description: 'User-centered design that combines aesthetics with functionality to create engaging digital experiences.',
       features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-      color: 'from-cyan-500 to-blue-500'
+      color: 'from-red-600 to-rose-700'
     },
     {
       id: 'digital-marketing',
@@ -151,7 +151,7 @@ const Services = () => {
       title: 'Digital Marketing',
       description: 'Strategic marketing solutions that increase visibility, drive traffic, and convert visitors into customers.',
       features: ['SEO Optimization', 'Social Media', 'Content Strategy', 'PPC Campaigns'],
-      color: 'from-emerald-500 to-teal-500'
+      color: 'from-[#e11d48] to-[#be123c]'
     },
     {
       id: 'staffing',
@@ -159,7 +159,7 @@ const Services = () => {
       title: 'IT Staffing',
       description: 'Flexible staffing solutions to help you find the right talent for your technology projects.',
       features: ['Contract Staffing', 'Permanent Placement', 'Team Augmentation', 'Skill Assessment'],
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-[#be123c] to-[#9f1239]'
     },
     {
       id: 'bpo',
@@ -167,7 +167,7 @@ const Services = () => {
       title: 'BPO Services',
       description: 'Business process outsourcing that helps you streamline operations and reduce costs.',
       features: ['Customer Support', 'Data Entry', 'Back Office', 'Technical Support'],
-      color: 'from-[#023e8a] to-[#023e8a]'
+      color: 'from-[#9f1239] to-[#881337]'
     },
     {
       id: 'insurance',
@@ -175,7 +175,7 @@ const Services = () => {
       title: 'Insurance Solutions',
       description: 'Technology solutions tailored for the insurance industry to improve efficiency and customer service.',
       features: ['Policy Management', 'Claims Processing', 'CRM Solutions', 'Data Analytics'],
-      color: 'from-indigo-500 to-purple-500'
+      color: 'from-rose-500 to-rose-700'
     },
     {
       id: 'financial',
@@ -183,18 +183,18 @@ const Services = () => {
       title: 'Financial Services',
       description: 'Digital transformation solutions for financial institutions to stay competitive in the modern market.',
       features: ['Fintech Solutions', 'Payment Gateways', 'Risk Management', 'Compliance'],
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-red-600 to-rose-600'
     }
   ];
 
   return (
     <main className="relative pt-20">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f3ec' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <motion.span 
-              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -210,7 +210,7 @@ const Services = () => {
             >
               OUR{' '}
               <span style={{
-                background: 'linear-gradient(135deg, #c47b8a, #a855f7, #06b6d4)',
+                background: 'linear-gradient(135deg, #e11d48, #be123c, #9f1239)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}>
@@ -232,7 +232,7 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f2ece4' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f9fa' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {services.map((service) => (
@@ -251,13 +251,13 @@ const Services = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f3ec' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div>
               <motion.span 
-                className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+                className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -289,8 +289,8 @@ const Services = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.2 }}
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#023e8a]/20 flex items-center justify-center flex-shrink-0">
-                      <featureItem.icon className="w-5 h-5 text-[#023e8a]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#e11d48]/20 flex items-center justify-center flex-shrink-0">
+                      <featureItem.icon className="w-5 h-5 text-[#e11d48]" />
                     </div>
                     <div>
                       <h4 className="text-base font-display font-bold text-[#4a4a4a]">{featureItem.title}</h4>
@@ -311,8 +311,8 @@ const Services = () => {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="p-6 border border-[#ddd2c4] text-center"
-                  style={{ background: '#fefcfa' }}
+                  className="p-6 border border-gray-100 text-center"
+                  style={{ background: '#ffffff' }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

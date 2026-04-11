@@ -71,37 +71,37 @@ const About = () => {
       icon: Target,
       title: 'Our Mission',
       description: 'To empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage in the digital era.',
-      color: 'from-[#023e8a] to-rose-500'
+      color: 'from-rose-500 to-rose-700'
     },
     {
       icon: Eye,
       title: 'Our Vision',
       description: 'To be the leading technology partner for businesses worldwide, known for delivering exceptional digital experiences and transformative solutions.',
-      color: 'from-purple-500 to-violet-500'
+      color: 'from-rose-600 to-red-600'
     },
     {
       icon: Lightbulb,
       title: 'Innovation',
       description: 'We constantly push boundaries, embracing emerging technologies and creative approaches to solve complex challenges.',
-      color: 'from-cyan-500 to-blue-500'
+      color: 'from-red-500 to-rose-500'
     },
     {
       icon: Award,
       title: 'Excellence',
       description: 'We maintain the highest standards in everything we do, from code quality to client communication and project delivery.',
-      color: 'from-emerald-500 to-teal-500'
+      color: 'from-red-600 to-rose-700'
     },
     {
       icon: Users,
       title: 'Collaboration',
       description: 'We believe in the power of teamwork, working closely with our clients to understand their needs and achieve shared goals.',
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-[#e11d48] to-[#be123c]'
     },
     {
       icon: Rocket,
       title: 'Results-Driven',
       description: 'We focus on delivering measurable outcomes that positively impact our clients\' bottom line and business objectives.',
-      color: 'from-[#023e8a] to-[#023e8a]'
+      color: 'from-[#e11d48] to-[#9f1239]'
     }
   ];
 
@@ -117,13 +117,13 @@ const About = () => {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         {/* Rich gradient mesh background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }} />
-        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-to-bl from-[#023e8a]/[0.05] via-purple-300/[0.03] to-transparent rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-gradient-to-tr from-amber-200/[0.06] to-transparent rounded-full blur-[80px]" />
+        <div className="absolute inset-0" style={{ background: '#fcfdff' }} />
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-to-bl from-[#e11d48]/[0.05] via-rose-300/[0.03] to-transparent rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-gradient-to-tr from-rose-200/[0.06] to-transparent rounded-full blur-[80px]" />
         
         {/* Animated orbs */}
         <motion.div
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#023e8a]/4 rounded-full blur-[120px]"
+          className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#e11d48]/4 rounded-full blur-[120px]"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 50, 0],
@@ -134,7 +134,7 @@ const About = () => {
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 py-20">
           <div className="max-w-5xl">
             <motion.span 
-              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -143,7 +143,7 @@ const About = () => {
             </motion.span>
              
               <h1 className="about-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#4a4a4a] leading-none tracking-tighter">
-              WE ARE <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400">The Sky Venture</span>
+              WE ARE <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e11d48] via-rose-500 to-red-600">The Sky Venture</span>
             </h1>
             
             <div className="about-content mt-8 max-w-2xl">
@@ -157,14 +157,14 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec 0%, #faf5f7 50%, #f2ece4 100%)' }}>
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-[#023e8a]/[0.03] to-transparent rounded-full blur-[100px]" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-[#e11d48]/[0.03] to-transparent rounded-full blur-[100px]" />
         <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div>
               <motion.span 
-                className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+                className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -179,7 +179,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                BUILDING THE <span className="text-[#023e8a]">FUTURE</span>
+                BUILDING THE <span className="text-[#e11d48]">FUTURE</span>
               </motion.h2>
 
               <div className="space-y-6 text-[#6b7280] font-body leading-relaxed">
@@ -248,13 +248,13 @@ const About = () => {
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="p-6 border border-[#ddd2c4] text-center shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
+                    className="p-6 border border-gray-100 text-center shadow-sm" style={{ background: '#ffffff' }}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className="text-3xl font-display font-black text-[#023e8a] mb-1">
+                    <div className="text-3xl font-display font-black text-[#e11d48] mb-1">
                       {stat.value}
                     </div>
                     <div className="text-[10px] text-[#6b7280] font-body uppercase tracking-widest">
@@ -269,13 +269,13 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4, #f8f3ec, #faf5f7)' }}>
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-gradient-to-t from-[#023e8a]/[0.03] to-transparent rounded-full blur-[100px]" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f9fa' }}>
+        <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-gradient-to-t from-[#e11d48]/[0.03] to-transparent rounded-full blur-[100px]" />
         <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span 
-              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -289,7 +289,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              WHAT DRIVES <span className="text-[#023e8a]">US</span>
+              WHAT DRIVES <span className="text-[#e11d48]">US</span>
             </motion.h2>
           </div>
 
@@ -298,7 +298,7 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="value-card group relative p-8 border border-[#ddd2c4] perspective-1000 shadow-sm" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}
+                className="value-card group relative p-8 border border-gray-100 perspective-1000 shadow-sm" style={{ background: '#ffffff' }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -324,13 +324,13 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec, #f2ece4)' }}>
-        <div className="absolute top-1/2 left-0 w-full h-1/2 bg-gradient-to-t from-amber-200/[0.04] to-transparent" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
+        <div className="absolute top-1/2 left-0 w-full h-1/2 bg-gradient-to-t from-rose-200/[0.04] to-transparent" />
         <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.span 
-              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -344,7 +344,7 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              MEET THE <span className="text-[#023e8a]">LEADERS</span>
+              MEET THE <span className="text-[#e11d48]">LEADERS</span>
             </motion.h2>
           </div>
 
@@ -363,7 +363,7 @@ const About = () => {
                 {/* Avatar */}
                 <div className="relative mx-auto w-32 h-32 mb-6">
                   <motion.div 
-                    className="w-full h-full rounded-full bg-gradient-to-br from-[#023e8a] to-purple-500 flex items-center justify-center overflow-hidden"
+                    className="w-full h-full rounded-full bg-gradient-to-br from-[#e11d48] to-[#be123c] flex items-center justify-center overflow-hidden"
                     whileHover={{ scale: 1.15, rotate: 10 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   >
@@ -373,7 +373,7 @@ const About = () => {
                   </motion.div>
                   {/* Glow effect */}
                   <motion.div 
-                    className="absolute inset-0 rounded-full bg-[#023e8a]/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 rounded-full bg-[#e11d48]/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
@@ -381,12 +381,12 @@ const About = () => {
 
                 {/* Info */}
                 <motion.h3 
-                  className="text-lg font-display font-bold text-[#4a4a4a] group-hover:text-[#023e8a] transition-colors duration-300"
+                  className="text-lg font-display font-bold text-[#4a4a4a] group-hover:text-[#e11d48] transition-colors duration-300"
                   whileHover={{ letterSpacing: '0.05em' }}
                 >
                   {member.name}
                 </motion.h3>
-                <p className="text-[#023e8a] text-sm font-body">
+                <p className="text-[#e11d48] text-sm font-body">
                   {member.role}
                 </p>
               </motion.div>

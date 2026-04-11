@@ -1,224 +1,100 @@
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowDown } from 'lucide-react';
-import { heroConfig } from '../config';
-
-gsap.registerPlugin(ScrollTrigger);
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const triggersRef = useRef<ScrollTrigger[]>([]);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const grid = gridRef.current;
-    const title = titleRef.current;
-    if (!section || !grid || !title) return;
-
-    // Set loaded state for initial animations
-    const loadTimer = setTimeout(() => setIsLoaded(true), 100);
-
-    // Get all grid cells
-    const cells = grid.querySelectorAll('.grid-cell');
-    const titleBlocks = title.querySelectorAll('.title-block');
-
-    // Initial entrance animation
-    const tl = gsap.timeline({ delay: 0.3 });
-
-    // Grid cells flip in with stagger
-    tl.fromTo(
-      cells,
-      {
-        rotateX: 90,
-        y: -100,
-        opacity: 0,
-      },
-      {
-        rotateX: 0,
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: {
-          each: 0.05,
-          from: 'random',
-        },
-        ease: 'expo.out',
-      }
-    );
-
-    // Title blocks decode animation
-    tl.fromTo(
-      titleBlocks,
-      {
-        scale: 0,
-        rotate: 180,
-        opacity: 0,
-      },
-      {
-        scale: 1,
-        rotate: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-      },
-      '-=0.5'
-    );
-
-    // Scroll-based parallax
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
-      },
-    });
-
-    scrollTl.to(grid, {
-      y: 150,
-      ease: 'none',
-    });
-
-    scrollTl.to(
-      title,
-      {
-        x: -200,
-        ease: 'none',
-      },
-      0
-    );
-
-    if (scrollTl.scrollTrigger) {
-      triggersRef.current.push(scrollTl.scrollTrigger);
-    }
-
-    return () => {
-      clearTimeout(loadTimer);
-      triggersRef.current.forEach(trigger => trigger.kill());
-      triggersRef.current = [];
-    };
-  }, []);
-
-  if (!heroConfig.titleLine1 && !heroConfig.titleLine2) return null;
-
-  const rows = heroConfig.gridRows || 6;
-  const cols = heroConfig.gridCols || 8;
-
-  // Generate grid cells
-  const generateGridCells = () => {
-    const cells = [];
-
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const isPink = heroConfig.pinkCells.some((p) => p.row === row && p.col === col);
-        const cellIndex = row * cols + col;
-
-        cells.push(
-          <div
-            key={cellIndex}
-            className={`grid-cell absolute preserve-3d backface-hidden transition-all duration-300 hover:scale-105 hover:z-10 ${
-              isPink ? 'bg-[#023e8a]' : ''
-            }`}
-            style={{
-              left: `${(col / cols) * 100}%`,
-              top: `${(row / rows) * 100}%`,
-              width: `${100 / cols}%`,
-              height: `${100 / rows}%`,
-              backgroundImage: isPink ? 'none' : heroConfig.backgroundImage ? `url(${heroConfig.backgroundImage})` : 'none',
-              backgroundPosition: `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`,
-              backgroundSize: `${cols * 100}% ${rows * 100}%`,
-              transformOrigin: 'center center',
-            }}
-            data-cursor-hover
-          />
-        );
-      }
-    }
-    return cells;
-  };
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen w-full bg-black overflow-hidden perspective-1000"
-    >
-      {/* Grid container */}
-      <div
-        ref={gridRef}
-        className="absolute inset-0 preserve-3d"
-        style={{ transformStyle: 'preserve-3d' }}
-      >
-        {generateGridCells()}
-      </div>
-
-      {/* Title overlay */}
-      <div
-        ref={titleRef}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
-      >
-        <div className="relative w-full max-w-6xl px-6">
-          {/* Title Line 1 */}
-          {heroConfig.titleLine1 && (
-            <div className="flex justify-start mb-4">
-              <div className="title-block bg-[#023e8a] px-8 py-4 pointer-events-auto hover:scale-110 transition-transform duration-300">
-                <span className="font-display font-black text-6xl md:text-8xl lg:text-9xl text-black tracking-tighter">
-                  {heroConfig.titleLine1}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* Title Line 2 */}
-          {heroConfig.titleLine2 && (
-            <div className="flex justify-end">
-              <div className="title-block bg-[#023e8a] px-8 py-4 pointer-events-auto hover:scale-110 transition-transform duration-300">
-                <span className="font-display font-black text-6xl md:text-8xl lg:text-9xl text-black tracking-tighter">
-                  {heroConfig.titleLine2}
-                </span>
-              </div>
-            </div>
-          )}
+    <section className="relative w-full min-h-[90vh] bg-white overflow-hidden flex flex-col justify-center pt-24 pb-16">
+      {/* Background Decor - "FUTURE" text watermark */}
+      <div className="absolute right-[-10%] md:right-[-2%] top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-0">
+        <div className="text-[#f8f9fa] font-black text-[150px] md:text-[250px] xl:text-[300px] leading-none transform -rotate-90 origin-center select-none opacity-[0.85]" style={{ letterSpacing: '0.1em' }}>
+          FUTURE
         </div>
       </div>
-
-      {/* Subtitle */}
-      {heroConfig.subtitle && (
-        <div className="absolute bottom-32 left-0 right-0 text-center z-20">
-          <p className="font-body text-white/60 text-sm md:text-base uppercase tracking-[0.3em]">
-            {heroConfig.subtitle}
-          </p>
-        </div>
-      )}
-
-      {/* CTA Button */}
-      {heroConfig.ctaText && (
-        <div className="absolute bottom-16 left-0 right-0 flex justify-center z-20">
-          <a
-            href={heroConfig.ctaHref || '#products'}
-            className="group flex items-center gap-3 px-8 py-4 border-2 border-[#023e8a] text-[#023e8a] font-display font-bold text-sm uppercase tracking-wider hover:bg-[#023e8a] hover:text-black transition-all duration-300"
-            data-cursor-hover
-          >
-            {heroConfig.ctaText}
-            <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
-          </a>
-        </div>
-      )}
-
-      {/* Corner decorations */}
-      <div className="absolute top-24 left-6 w-16 h-16 border-l-2 border-t-2 border-[#023e8a]/30 z-20" />
-      <div className="absolute bottom-24 right-6 w-16 h-16 border-r-2 border-b-2 border-[#023e8a]/30 z-20" />
-
-      {/* Loading overlay */}
-      <div
-        className={`absolute inset-0 bg-black z-50 transition-opacity duration-700 pointer-events-none ${
-          isLoaded ? 'opacity-0' : 'opacity-100'
-        }`}
+      
+      {/* Dotted pattern backgrounds */}
+      {/* Top right pattern */}
+      <div 
+        className="absolute right-[8%] top-[10%] z-0 text-[#e11d48] opacity-[0.15] pointer-events-none" 
+        style={{ 
+          backgroundImage: 'radial-gradient(circle, currentColor 2.5px, transparent 2.5px)', 
+          backgroundSize: '24px 24px', 
+          width: '250px', 
+          height: '250px' 
+        }} 
       />
+      
+      {/* Bottom left pattern (under the text area and extending to middle) */}
+      <div 
+        className="absolute left-[35%] bottom-[10%] z-0 text-[#e11d48] opacity-[0.15] pointer-events-none" 
+        style={{ 
+          backgroundImage: 'radial-gradient(circle, currentColor 2.5px, transparent 2.5px)', 
+          backgroundSize: '24px 24px', 
+          width: '300px', 
+          height: '200px' 
+        }} 
+      />
+
+      <div className="relative max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between z-10">
+        
+        {/* Left Side: Content */}
+        <div className="w-full md:w-1/2 flex flex-col items-start gap-8 z-10 pt-10 md:pt-0">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] font-black leading-[0.9] text-[#0f172a] -tracking-[0.02em] flex flex-col"
+          >
+            <span className="uppercase block">Digital</span>
+            <span className="uppercase block">Future</span>
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-[#64748b] font-medium text-[16px] md:text-[18px] leading-relaxed max-w-[500px]"
+          >
+            We engineer enterprise-grade technical solutions and immersive digital
+            experiences that elevate your brand to the next standard of excellence in the
+            modern market.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
+            <Link to="/contact">
+              <button className="bg-[#e11d48] text-white font-bold text-sm uppercase tracking-widest px-8 md:px-10 py-4 shadow-[0_8px_20px_rgba(225,29,72,0.3)] hover:bg-[#be123c] hover:shadow-[0_10px_25px_rgba(225,29,72,0.4)] transition-all">
+                Start Project
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Right Side: Circular Image Layout */}
+        <div className="w-full md:w-1/2 flex justify-center lg:justify-end relative mt-24 md:mt-0 z-10">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="relative w-[350px] h-[350px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px]"
+            >
+              {/* Thick Red Circle Ring background behind */}
+              <div className="absolute inset-0 rounded-full border-[10px] md:border-[14px] border-[#e11d48] bg-white shadow-xl z-0" />
+              
+              {/* Image intersecting the circle. */}
+              <div className="absolute inset-[-15%] flex items-center justify-center z-10 overflow-visible">
+                <img 
+                  src="/images/right.png" 
+                  alt="Professional team around a laptop" 
+                  className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] mt-10 md:mt-16 mr-[-5%] filter"
+                />
+              </div>
+            </motion.div>
+        </div>
+
+      </div>
     </section>
   );
 };

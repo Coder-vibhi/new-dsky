@@ -5,6 +5,7 @@ import { Menu, X, Mail } from 'lucide-react';
 
 const navLinks = [
   { label: 'HOME', href: '/' },
+  { label: 'ABOUT', href: '/about' },
   { label: 'SERVICES', href: '/services' },
   { label: 'PORTFOLIO', href: '/portfolio' },
   { label: 'TESTIMONIALS', href: '/testimonials' },
@@ -21,47 +22,45 @@ const Navigation = () => {
   return (
     <>
       <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
-        <div className="w-full flex items-center h-24">
+        <div className="w-full flex items-center justify-between h-24 px-6 md:px-8 lg:px-16">
 
-          {/* Left Side (White area) - roughly 50% */}
-          <div className="flex-1 flex items-center justify-between pl-8 pr-4 lg:pl-16 lg:pr-12 h-full">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-gray-900 overflow-hidden">
-                <span className="text-xl font-black text-gray-900 tracking-tighter leading-none">𝒯</span>
-                <span className="text-orange-500 text-lg font-black leading-none -ml-0.5">𝓼</span>
-              </div>
-              <div className="flex flex-col leading-[1.1] ml-1">
-                <span className="text-[12px] font-black text-gray-900 uppercase tracking-widest whitespace-nowrap">The Sky</span>
-                <span className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.2em] whitespace-nowrap">Ventures</span>
-              </div>
-            </Link>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-4 shrink-0">
+            <div className="w-[46px] h-[46px] bg-white rounded-full flex items-center justify-center border-2 border-[#0f172a]">
+              <span className="text-[20px] font-bold text-[#0f172a] -mr-[1px] mt-[1px]">T</span>
+              <span className="text-[20px] font-bold text-[#e11d48] mt-[1px]">S</span>
+            </div>
+            {/* Stacked logo layout */}
+            <div className="flex flex-col justify-center leading-[1.1] pt-1">
+              <span className="text-[15px] font-black text-[#0f172a] uppercase tracking-[0.1em] whitespace-nowrap">The Sky</span>
+              <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-[0.25em] whitespace-nowrap">Ventures</span>
+            </div>
+          </Link>
 
-            {/* Desktop Navigation links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-[11px] font-extrabold uppercase tracking-widest transition-colors ${location.pathname === link.href || (link.href === '/' && location.pathname === '')
-                    ? 'text-rose-600'
-                    : 'text-gray-500 hover:text-rose-600'
-                    }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          {/* Desktop Navigation links */}
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-12 ml-16 flex-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`text-[12px] font-bold uppercase tracking-widest transition-colors ${location.pathname === link.href || (link.href === '/' && location.pathname === '')
+                  ? 'text-[#e11d48]'
+                  : 'text-[#64748b] hover:text-[#0f172a]'
+                  }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Right Side (Red area) - roughly 50% */}
-          <div className="flex-1 flex items-center justify-end pr-8 lg:pr-16 h-full">
+          {/* Right Side */}
+          <div className="flex items-center gap-6 shrink-0 justify-end">
             <div className="hidden lg:flex items-center gap-6">
-              <span className="text-white font-bold tracking-widest text-sm whitespace-nowrap">
+              <span className="text-gray-900 font-bold tracking-widest text-sm whitespace-nowrap">
                 +1 - 800 - 123 - 4567
               </span>
               <Link to="/contact">
-                <button className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                <button className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-[#e11d48] transition-colors">
                   <Mail className="w-4 h-4" />
                 </button>
               </Link>
@@ -69,7 +68,7 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-white p-2"
+              className="lg:hidden text-gray-900 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <Menu size={28} />
@@ -101,7 +100,7 @@ const Navigation = () => {
                   <Link
                     to={link.href}
                     className={`text-2xl font-black tracking-widest uppercase ${location.pathname === link.href || (link.href === '/' && location.pathname === '')
-                      ? 'text-rose-600' : 'text-gray-900'
+                      ? 'text-[#e11d48]' : 'text-gray-900'
                       }`}
                   >
                     {link.label}

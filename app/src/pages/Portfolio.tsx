@@ -24,7 +24,7 @@ const projects: Project[] = [
     category: 'Web Development',
     description: 'A premium e-commerce platform with advanced AI-powered product recommendations and seamless checkout experience.',
     image: '/images/project-1.jpg',
-    color: 'from-[#023e8a] to-rose-500',
+    color: 'from-[#e11d48] to-[#be123c]',
     tags: ['React', 'Node.js', 'MongoDB', 'AI']
   },
   {
@@ -33,7 +33,7 @@ const projects: Project[] = [
     category: 'App Development',
     description: 'Mobile banking application with real-time transactions, budget tracking, and investment management features.',
     image: '/images/project-2.jpg',
-    color: 'from-purple-500 to-violet-500',
+    color: 'from-rose-500 to-rose-700',
     tags: ['React Native', 'Firebase', 'Plaid API']
   },
   {
@@ -42,7 +42,7 @@ const projects: Project[] = [
     category: 'Web Development',
     description: 'Healthcare patient portal with appointment scheduling, telemedicine, and electronic health records integration.',
     image: '/images/project-3.jpg',
-    color: 'from-cyan-500 to-blue-500',
+    color: 'from-rose-600 to-red-600',
     tags: ['Next.js', 'TypeScript', 'HIPAA Compliant']
   },
   {
@@ -51,7 +51,7 @@ const projects: Project[] = [
     category: 'UI/UX Design',
     description: 'Complete brand identity and design system for a tech startup, including logo, website, and marketing materials.',
     image: '/images/project-4.jpg',
-    color: 'from-emerald-500 to-teal-500',
+    color: 'from-red-500 to-rose-500',
     tags: ['Figma', 'Brand Strategy', 'Design System']
   },
   {
@@ -60,7 +60,7 @@ const projects: Project[] = [
     category: 'Web Development',
     description: 'Real estate platform with virtual tours, property management, and advanced search capabilities.',
     image: '/images/project-5.jpg',
-    color: 'from-amber-500 to-orange-500',
+    color: 'from-red-600 to-rose-700',
     tags: ['Vue.js', 'Three.js', 'Maps API']
   },
   {
@@ -69,7 +69,7 @@ const projects: Project[] = [
     category: 'App Development',
     description: 'Social networking app with real-time messaging, content sharing, and community building features.',
     image: '/images/project-6.jpg',
-    color: 'from-[#023e8a] to-[#023e8a]',
+    color: 'from-[#be123c] to-[#9f1239]',
     tags: ['Flutter', 'WebSocket', 'AWS']
   }
 ];
@@ -111,13 +111,13 @@ const Portfolio = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         {/* Rich gradient mesh background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8f3ec, #f2ece4, #faf5f7)' }} />
-        <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-gradient-to-br from-[#023e8a]/[0.04] via-purple-300/[0.03] to-transparent rounded-full blur-[80px]" />
-        <div className="absolute bottom-0 right-0 w-[40%] h-[40%] bg-gradient-to-tl from-amber-200/[0.06] to-transparent rounded-full blur-[60px]" />
+        <div className="absolute inset-0" style={{ background: '#fcfdff' }} />
+        <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-gradient-to-br from-[#e11d48]/[0.04] via-rose-300/[0.03] to-transparent rounded-full blur-[80px]" />
+        <div className="absolute bottom-0 right-0 w-[40%] h-[40%] bg-gradient-to-tl from-rose-200/[0.06] to-transparent rounded-full blur-[60px]" />
         
         {/* Animated orbs */}
         <motion.div
-          className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#023e8a]/4 rounded-full blur-[120px]"
+          className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#e11d48]/4 rounded-full blur-[120px]"
           animate={{
             scale: [1, 1.3, 1],
             x: [0, 100, 0],
@@ -125,7 +125,7 @@ const Portfolio = () => {
           transition={{ duration: 15, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]"
+          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-red-500/5 rounded-full blur-[100px]"
           animate={{
             scale: [1, 1.2, 1],
             x: [0, -50, 0],
@@ -136,7 +136,7 @@ const Portfolio = () => {
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 py-20">
           <div className="max-w-4xl">
             <motion.span 
-              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -145,7 +145,7 @@ const Portfolio = () => {
             </motion.span>
             
               <h1 className="portfolio-title mt-6 text-5xl md:text-7xl lg:text-8xl font-display font-black text-[#4a4a4a] leading-none tracking-tighter">
-              FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#023e8a] via-purple-500 to-cyan-400">PROJECTS</span>
+              FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e11d48] via-rose-500 to-red-600">PROJECTS</span>
             </h1>
             
             <motion.p 
@@ -162,19 +162,19 @@ const Portfolio = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="relative py-8 border-b border-[#ddd2c4]" style={{ background: 'linear-gradient(90deg, #f2ece4, #f8f3ec)' }}>
+      <section className="relative py-8 border-b border-gray-100" style={{ background: '#ffffff' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="flex flex-wrap items-center gap-4">
-            <Filter className="w-5 h-5 text-[#023e8a]" />
+            <Filter className="w-5 h-5 text-[#e11d48]" />
             {categories.map((category) => (
               <motion.button
                 key={category}
                 className={`px-6 py-2 font-body text-sm tracking-wide transition-all ${
                   activeCategory === category
-                    ? 'bg-[#023e8a] text-white'
-                    : 'text-[#6b7280] border border-[#ddd2c4] hover:text-[#4a4a4a]'
+                    ? 'bg-[#e11d48] text-white'
+                    : 'text-[#6b7280] border border-gray-100 hover:text-[#4a4a4a]'
                 }`}
-                style={activeCategory !== category ? { background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' } : undefined}
+                style={activeCategory !== category ? { background: '#ffffff' } : undefined}
                 onClick={() => setActiveCategory(category)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -187,8 +187,8 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f2ece4 0%, #f8f3ec 50%, #faf5f7 100%)' }}>
-        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-gradient-to-l from-purple-200/[0.04] to-transparent rounded-full blur-[100px]" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f9fa' }}>
+        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-gradient-to-l from-[#e11d48]/[0.04] to-transparent rounded-full blur-[100px]" />
         <div className="w-full px-6 md:px-12 lg:px-20 relative z-10">
           <AnimatePresence mode="wait">
             <motion.div
@@ -246,7 +246,7 @@ const Portfolio = () => {
                         transition={{ duration: 0.3 }}
                       >
                         <motion.div
-                          className="w-16 h-16 rounded-full bg-[#023e8a] flex items-center justify-center"
+                          className="w-16 h-16 rounded-full bg-[#e11d48] flex items-center justify-center"
                           initial={{ scale: 0, rotate: -180 }}
                           animate={{ scale: hoveredProject === project.id ? 1 : 0, rotate: hoveredProject === project.id ? 0 : -180 }}
                           transition={{ duration: 0.4, delay: 0.1, type: 'spring' }}
@@ -257,14 +257,14 @@ const Portfolio = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 border border-[#ddd2c4] border-t-0" style={{ background: 'linear-gradient(135deg, #fefcfa, #f9f5f0)' }}>
+                    <div className="p-6 border border-gray-100 border-t-0" style={{ background: '#ffffff' }}>
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`px-3 py-1 text-xs font-body bg-gradient-to-r ${project.color} text-white rounded-full`}>
                           {project.category}
                         </span>
                       </div>
                       
-                      <h3 className="text-2xl font-display font-bold text-[#4a4a4a] mb-2 group-hover:text-[#023e8a] transition-colors duration-300">
+                      <h3 className="text-2xl font-display font-bold text-[#4a4a4a] mb-2 group-hover:text-[#e11d48] transition-colors duration-300">
                         {project.title}
                       </h3>
                       
@@ -277,7 +277,7 @@ const Portfolio = () => {
                         {project.tags.map((tag, i) => (
                           <motion.span 
                             key={i} 
-                            className="text-xs text-[#6b7280] font-body hover:text-[#023e8a] transition-colors"
+                            className="text-xs text-[#6b7280] font-body hover:text-[#e11d48] transition-colors"
                             whileHover={{ scale: 1.1 }}
                           >
                             #{tag}
@@ -294,8 +294,8 @@ const Portfolio = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f3ec, #f2ece4)' }}>
-        <div className="absolute bottom-0 left-1/3 w-[500px] h-[200px] bg-gradient-to-t from-amber-200/[0.04] to-transparent rounded-full blur-[80px]" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
+        <div className="absolute bottom-0 left-1/3 w-[500px] h-[200px] bg-gradient-to-t from-rose-200/[0.04] to-transparent rounded-full blur-[80px]" />
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -312,7 +312,7 @@ const Portfolio = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="text-4xl md:text-6xl font-display font-black text-[#023e8a] mb-2">
+                <div className="text-4xl md:text-6xl font-display font-black text-[#e11d48] mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-[#6b7280] font-body uppercase tracking-wider">
@@ -325,8 +325,8 @@ const Portfolio = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #f8f3ec, #faf5f7)' }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#023e8a]/[0.04] via-purple-300/[0.03] to-cyan-300/[0.03]" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#e11d48]/[0.04] via-rose-300/[0.03] to-red-300/[0.03]" />
         
         <div className="relative z-10 w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -336,7 +336,7 @@ const Portfolio = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              HAVE A PROJECT IN <span className="text-[#023e8a]">MIND?</span>
+              HAVE A PROJECT IN <span className="text-[#e11d48]">MIND?</span>
             </motion.h2>
             <motion.p 
               className="text-lg text-[#6b7280] font-body mb-10 max-w-2xl mx-auto"
@@ -356,7 +356,7 @@ const Portfolio = () => {
             >
               <Link to="/contact">
                 <motion.button
-                  className="px-8 py-4 border border-[#c47b8a] text-[#c47b8a] font-display text-lg tracking-wide flex items-center gap-3 hover:bg-[#c47b8a] hover:text-white transition-all"
+                  className="px-8 py-4 border border-[#e11d48] text-[#e11d48] font-display text-lg tracking-wide flex items-center gap-3 hover:bg-[#e11d48] hover:text-white transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

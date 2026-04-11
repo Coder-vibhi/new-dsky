@@ -46,11 +46,11 @@ export interface HeroConfig {
 }
 
 export const heroConfig: HeroConfig = {
-  titleLine1: "",
-  titleLine2: "",
-  subtitle: "",
-  ctaText: "",
-  ctaHref: "",
+  titleLine1: "DIGITAL",
+  titleLine2: "FUTURE",
+  subtitle: "Transforming Ideas Into Digital Reality",
+  ctaText: "Explore Services",
+  ctaHref: "/services",
   backgroundImage: "",
   gridRows: 6,
   gridCols: 8,

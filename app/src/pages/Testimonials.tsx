@@ -19,8 +19,8 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <div className="group relative h-full cursor-pointer overflow-hidden border border-[#ddd2c4]">
-      <div className="relative p-8 h-full flex flex-col" style={{ background: '#fefcfa' }}>
+    <div className="group relative h-full cursor-pointer overflow-hidden border border-gray-100">
+      <div className="relative p-8 h-full flex flex-col" style={{ background: '#ffffff' }}>
         {/* Rating */}
         <div className="flex items-center gap-1 mb-4">
           {[...Array(testimonial.rating)].map((_, i) => (
@@ -30,7 +30,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
 
         {/* Quote Icon */}
         <div className="mb-4">
-          <Sparkles className="w-8 h-8 text-[#023e8a]/30" />
+          <Sparkles className="w-8 h-8 text-[#e11d48]/30" />
         </div>
 
         {/* Quote */}
@@ -39,7 +39,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
         </p>
 
         {/* Author */}
-        <div className="flex items-center gap-4 pt-6 border-t border-[#ddd2c4]">
+        <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
           <img
             src={testimonial.image}
             alt={testimonial.name}
@@ -139,11 +139,11 @@ const Testimonials = () => {
   return (
     <main className="relative pt-20">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f3ec' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             <motion.span
-              className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+              className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -158,11 +158,7 @@ const Testimonials = () => {
               transition={{ delay: 0.3 }}
             >
               WHAT OUR{' '}
-              <span style={{
-                background: 'linear-gradient(135deg, #c47b8a, #a855f7, #06b6d4)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e11d48] via-rose-500 to-red-600">
                 CLIENTS SAY
               </span>
             </motion.h1>
@@ -181,7 +177,7 @@ const Testimonials = () => {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f2ece4' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f9fa' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {testimonials.map((testimonial) => (
@@ -199,13 +195,13 @@ const Testimonials = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f3ec' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#fcfdff' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div>
               <motion.span
-                className="text-[#023e8a] text-sm font-body tracking-[0.3em] uppercase"
+                className="text-[#e11d48] text-sm font-body tracking-[0.3em] uppercase"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -233,8 +229,8 @@ const Testimonials = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.2 }}
                   >
-                    <div className="w-12 h-12 rounded-lg bg-[#023e8a]/20 flex items-center justify-center flex-shrink-0">
-                      <featureItem.icon className="w-5 h-5 text-[#023e8a]" />
+                    <div className="w-12 h-12 rounded-lg bg-[#e11d48]/20 flex items-center justify-center flex-shrink-0">
+                      <featureItem.icon className="w-5 h-5 text-[#e11d48]" />
                     </div>
                     <div>
                       <h4 className="text-base font-display font-bold text-[#4a4a4a]">{featureItem.title}</h4>
@@ -255,8 +251,8 @@ const Testimonials = () => {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="p-6 border border-[#ddd2c4] text-center"
-                  style={{ background: '#fefcfa' }}
+                  className="p-6 border border-gray-100 text-center"
+                  style={{ background: '#ffffff' }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -272,7 +268,7 @@ const Testimonials = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#f2ece4' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#f8f9fa' }}>
         <div className="w-full px-6 md:px-12 lg:px-20">
           <motion.div
             className="max-w-3xl mx-auto text-center"
@@ -289,7 +285,7 @@ const Testimonials = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#023e8a] text-white font-body font-semibold rounded-lg hover:bg-[#022d6b] transition-colors duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#e11d48] text-white font-body font-semibold rounded-lg hover:bg-rose-700 transition-colors duration-300 shadow-lg"
             >
               <span>Start Your Project</span>
               <ArrowRight className="w-5 h-5" />

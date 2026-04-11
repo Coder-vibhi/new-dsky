@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative border-t border-[#ddd2c4]" style={{ background: '#f2ece4' }}>
+    <footer className="relative border-t border-gray-100" style={{ background: '#fcfdff' }}>
       {/* Main Footer */}
       <div className="w-full px-6 md:px-12 lg:px-20 py-16">
         <div className="grid md:grid-cols-3 gap-12">
@@ -22,7 +22,7 @@ const Footer = () => {
           <div>
             <Link to="/" className="inline-block">
               <div className="text-2xl font-display font-black text-[#4a4a4a] tracking-tighter">
-                The Sky <span className="text-[#023e8a]">Venture</span>
+                The Sky <span className="text-[#e11d48]">Venture</span>
               </div>
             </Link>
             <p className="mt-4 text-[#6b7280] font-body text-sm max-w-xs leading-relaxed">
@@ -41,7 +41,7 @@ const Footer = () => {
                 { label: 'Contact', href: '/contact' },
               ].map((link, index) => (
                 <li key={index}>
-                  <Link to={link.href} className="text-[#6b7280] font-body text-sm hover:text-[#023e8a] transition-colors">
+                  <Link to={link.href} className="text-[#6b7280] font-body text-sm hover:text-[#e11d48] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -57,10 +57,10 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-white/60 border border-[#ddd2c4] flex items-center justify-center hover:bg-[#023e8a] hover:border-[#023e8a] transition-all"
+                  className="w-10 h-10 bg-white border border-gray-100 flex items-center justify-center hover:bg-[#e11d48] hover:border-[#e11d48] transition-all group"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4 text-[#6b7280] hover:text-white transition-colors" />
+                  <social.icon className="w-4 h-4 text-[#6b7280] group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
@@ -69,7 +69,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="w-full px-6 md:px-12 lg:px-20 py-4 border-t border-[#ddd2c4]">
+      <div className="w-full px-6 md:px-12 lg:px-20 py-4 border-t border-gray-100">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#6b7280] font-body text-xs">
             &copy; {new Date().getFullYear()} The Sky Venture. All rights reserved.
@@ -77,7 +77,7 @@ const Footer = () => {
 
           <button
             onClick={scrollToTop}
-            className="w-8 h-8 border border-[#ddd2c4] flex items-center justify-center hover:border-[#023e8a] hover:bg-[#023e8a]/5 transition-all"
+            className="w-8 h-8 border border-gray-100 flex items-center justify-center hover:border-[#e11d48] hover:bg-[#e11d48]/5 transition-all"
             aria-label="Back to top"
           >
             <ArrowUp className="w-4 h-4 text-[#6b7280]" />
