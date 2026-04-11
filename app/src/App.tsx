@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Components
-import Loader from './components/Loader';
+
 import Navigation from './components/Navigation';
 import PageTransition from './components/PageTransition';
 import Footer from './components/Footer';
@@ -23,26 +23,12 @@ import ProjectDetail from './pages/ProjectDetail';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-
-  useEffect(() => {
-    // Simulate initial load
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     // Scroll to top on route change
     window.scrollTo(0, 0);
   }, [location.pathname]);
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white">
