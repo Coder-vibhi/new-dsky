@@ -170,7 +170,7 @@ const Testimonials = () => {
               transition={{ delay: 0.4 }}
             >
               Don't just take our word for it. Hear from our satisfied clients about
-              their experience working with The Sky Ventures.
+              their experience working with The Sky Venture.
             </motion.p>
           </div>
         </div>
